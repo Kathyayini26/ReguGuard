@@ -257,16 +257,16 @@ PROGRAM_FINDINGS = [
         "remediation_actions_in_progress_july_2025": 4,
         "estimated_remediation_date": "9/30/2026",
         "october_2024_remediation_date": "9/30/2025",
-        "delay_documented": True,
-        "delay_reasons": "Date pushed from 9/30/2025 in October 2024 plan to 9/30/2026 in July 2025 report.",
+        "delay_documented": False,
+        "delay_reasons": None,
         "source_evidence": {
             "report_number": REPORT_NO,
             "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 1", "Table 4", "Table 6"],
             "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
-            "page_or_paragraph": "Lines 4244-4250, 4882-4887, 5295-5304",
-            "extraction_mode": "Directly reported from GAO-26-107980 tables"
+            "page_or_paragraph": "Lines 4244-4250, 4882-4887, 5295-5304, 5328-5335",
+            "extraction_mode": "Directly reported from GAO-26-107980 tables (Note: GAO line 5328 explicitly designates delays in 3 findings: Medical Devices, Cyber Protection, Cyber Response and Recovery)"
         }
     },
     {
@@ -545,6 +545,8 @@ OIG_RECOMMENDATIONS = [
 # ==============================================================================
 # DATASET D: Separate ReguGuard AI & Compliance Analysis
 # Note: Clearly separated from factual source records as required.
+# Separates NIST SP 800-53 Rev. 5, NIST CSF 2.0, and AICPA SOC 2 criteria.
+# All technical assumptions not directly in GAO report have been removed.
 # ==============================================================================
 FRAMEWORK_ANALYSIS = {
     "analysis_metadata": {
@@ -552,125 +554,128 @@ FRAMEWORK_ANALYSIS = {
         "derived_at": "2026-11-07",
         "report_evaluated": REPORT_NO,
         "publication_date": PUBLICATION_DATE,
-        "primary_framework": "NIST SP 800-53 Rev. 5 / NIST CSF 2.0",
-        "crosswalk_framework": "AICPA SOC 2 Type II (TSC 2017)"
+        "frameworks_separated": {
+            "primary_control_framework": "NIST SP 800-53 Rev. 5",
+            "risk_tier_framework": "NIST Cybersecurity Framework (CSF) 2.0",
+            "commercial_crosswalk_framework": "AICPA SOC 2 Type II (Trust Services Criteria 2017)"
+        }
     },
     "program_finding_mappings": {
         "GAO-26-107980-PROG-01": {
-            "mapped_nist_controls": ["PM-1", "CA-2"],
-            "mapped_soc2_criteria": ["CC1.2", "CC2.1"],
-            "nist_csf_category": "GV.PO",
-            "ai_risk_interpretation": "Inter-organizational friction between security services and product teams slows implementation velocity.",
-            "reguguard_compensating_strategy": "Establish automated security liaisons and shared SLIs in CI/CD pipelines."
+            "nist_sp_800_53_controls": ["PM-1", "CA-2"],
+            "nist_csf_categories": ["GV.PO"],
+            "soc2_criteria": ["CC1.2", "CC2.1"],
+            "ai_risk_interpretation": "Coordination and communication gaps between central security teams and system administrators can slow security implementation.",
+            "reguguard_compensating_strategy": "Establish documented operational SLAs and joint security-engineering coordination reviews."
         },
         "GAO-26-107980-PROG-02": {
-            "mapped_nist_controls": ["PM-1", "PM-2", "PL-2"],
-            "mapped_soc2_criteria": ["CC1.1", "CC1.3"],
-            "nist_csf_category": "GV.GO",
-            "ai_risk_interpretation": "Siloed governance and outdated policy documentation impede standardized security baselines.",
-            "reguguard_compensating_strategy": "Institute policy-as-code repository with automated pull-request validation for governance drift."
+            "nist_sp_800_53_controls": ["PM-1", "PM-2", "PL-2"],
+            "nist_csf_categories": ["GV.GO"],
+            "soc2_criteria": ["CC1.1", "CC1.3"],
+            "ai_risk_interpretation": "Siloed governance and outdated policy documentation impede consistent security baseline enforcement.",
+            "reguguard_compensating_strategy": "Institute centralized policy repositories with scheduled cadence for policy review and modernization."
         },
         "GAO-26-107980-PROG-03": {
-            "mapped_nist_controls": ["RA-3", "PM-9"],
-            "mapped_soc2_criteria": ["CC3.1", "CC3.2"],
-            "nist_csf_category": "ID.RA",
-            "ai_risk_interpretation": "Checklist compliance orientation prevents quantitative threat-informed risk ranking.",
-            "reguguard_compensating_strategy": "Implement automated asset-to-vulnerability graph scoring (EPSS / CISA KEV)."
+            "nist_sp_800_53_controls": ["RA-3", "PM-9"],
+            "nist_csf_categories": ["ID.RA"],
+            "soc2_criteria": ["CC3.1", "CC3.2"],
+            "ai_risk_interpretation": "Maturing beyond basic compliance requires ongoing threat modeling and quantitative risk assessments.",
+            "reguguard_compensating_strategy": "Implement risk scoring aligned with federal risk management framework baselines."
         },
         "GAO-26-107980-PROG-04": {
-            "mapped_nist_controls": ["PS-7", "AC-2", "PL-4"],
-            "mapped_soc2_criteria": ["CC1.4", "CC6.3"],
-            "nist_csf_category": "GV.RR",
-            "ai_risk_interpretation": "Mismatched ISSO domain expertise creates oversight blind spots in specialized infrastructure.",
-            "reguguard_compensating_strategy": "Assign domain-specialized security architects with role-specific compliance checklists."
+            "nist_sp_800_53_controls": ["PS-7", "AC-2", "PL-4"],
+            "nist_csf_categories": ["GV.RR"],
+            "soc2_criteria": ["CC1.4", "CC6.3"],
+            "ai_risk_interpretation": "ISSO roles need clear alignment with system types to ensure domain-appropriate oversight.",
+            "reguguard_compensating_strategy": "Define role charters and system steward responsibilities mapped to specialized system architectures."
         },
         "GAO-26-107980-PROG-05": {
-            "mapped_nist_controls": ["CA-7", "RA-5", "CM-6", "CM-8"],
-            "mapped_soc2_criteria": ["CC7.1", "CC7.2"],
-            "nist_csf_category": "DE.CM",
-            "ai_risk_interpretation": "Gaps in automated continuous monitoring lead to configuration drift and unmanaged asset states.",
-            "reguguard_compensating_strategy": "Deploy automated daily posture validation with centralized SIEM telemetry streaming."
+            "nist_sp_800_53_controls": ["CA-7", "RA-5", "CM-6", "CM-8"],
+            "nist_csf_categories": ["DE.CM"],
+            "soc2_criteria": ["CC7.1", "CC7.2"],
+            "ai_risk_interpretation": "Gaps in control assessments, scanning, compliance, and software management diminish visibility into operational state.",
+            "reguguard_compensating_strategy": "Deploy automated continuous monitoring and periodic control assessment schedules across system tiers."
         },
         "GAO-26-107980-PROG-06": {
-            "mapped_nist_controls": ["IA-3", "SC-7", "SI-2"],
-            "mapped_soc2_criteria": ["CC6.6", "CC7.1"],
-            "nist_csf_category": "PR.PS",
-            "ai_risk_interpretation": "Medical device firmware lifecycles prevent timely patching, requiring architectural isolation.",
-            "reguguard_compensating_strategy": "Enforce micro-segmentation and zero-trust proxy boundaries around unpatchable firmware."
+            "nist_sp_800_53_controls": ["IA-3", "SC-7", "SI-2"],
+            "nist_csf_categories": ["PR.PS"],
+            "soc2_criteria": ["CC6.6", "CC7.1"],
+            "ai_risk_interpretation": "Medical device constraints can limit prompt patch deployment, requiring defense-in-depth isolation.",
+            "reguguard_compensating_strategy": "Implement network segmentation and compensating boundary controls for legacy medical devices."
         },
         "GAO-26-107980-PROG-07": {
-            "mapped_nist_controls": ["CM-2", "CM-6", "AC-4"],
-            "mapped_soc2_criteria": ["CC6.8", "CC8.1"],
-            "nist_csf_category": "PR.DS",
-            "ai_risk_interpretation": "Multi-tenant cloud drift creates unmonitored egress and public resource exposures.",
-            "reguguard_compensating_strategy": "Enforce Terraform/OpenTofu baseline linting in CI/CD and CloudTrail KMS log digests."
+            "nist_sp_800_53_controls": ["CM-2", "CM-6", "AC-4"],
+            "nist_csf_categories": ["PR.DS"],
+            "soc2_criteria": ["CC6.8", "CC8.1"],
+            "ai_risk_interpretation": "Inconsistent application of cloud configurations can create drift and unintended exposure.",
+            "reguguard_compensating_strategy": "Establish standardized baseline configurations and continuous posture validation across cloud environments."
         },
         "GAO-26-107980-PROG-08": {
-            "mapped_nist_controls": ["CM-8", "AC-2"],
-            "mapped_soc2_criteria": ["CC6.1", "CC6.8"],
-            "nist_csf_category": "ID.AM",
-            "ai_risk_interpretation": "Unapproved SaaS and infrastructure assets bypass enterprise vulnerability scanning.",
-            "reguguard_compensating_strategy": "Implement DNS egress sinkholing and automated cloud billing resource reconciliation."
+            "nist_sp_800_53_controls": ["CM-8", "AC-2"],
+            "nist_csf_categories": ["ID.AM"],
+            "soc2_criteria": ["CC6.1", "CC6.8"],
+            "ai_risk_interpretation": "Unmanaged or untracked shadow IT assets introduce unmonitored risk into enterprise networks.",
+            "reguguard_compensating_strategy": "Enforce asset discovery mechanisms and mandatory system registration processes."
         },
         "GAO-26-107980-PROG-09": {
-            "mapped_nist_controls": ["AC-3", "AC-6", "SC-7"],
-            "mapped_soc2_criteria": ["CC6.1", "CC6.6"],
-            "nist_csf_category": "PR.AA",
-            "ai_risk_interpretation": "Perimeter-only defense without zero trust allows lateral movement upon credential compromise.",
-            "reguguard_compensating_strategy": "Require phishing-resistant FIDO2 MFA and ephemeral mutual-TLS between services."
+            "nist_sp_800_53_controls": ["AC-3", "AC-6", "SC-7"],
+            "nist_csf_categories": ["PR.AA"],
+            "soc2_criteria": ["CC6.1", "CC6.6"],
+            "ai_risk_interpretation": "Implementing zero trust principles provides layered protection against credential compromise.",
+            "reguguard_compensating_strategy": "Transition toward explicit verification, least privilege, and assumed-breach architectural patterns."
         },
         "GAO-26-107980-PROG-10": {
-            "mapped_nist_controls": ["DE.CM", "SI-4", "AU-6"],
-            "mapped_soc2_criteria": ["CC7.2", "CC7.3"],
-            "nist_csf_category": "DE.AE",
-            "ai_risk_interpretation": "High alert volume and unoptimized triggers cause alert fatigue and delayed incident detection.",
-            "reguguard_compensating_strategy": "Correlate detection rules with adversary emulation telemetry (MITRE ATT&CK)."
+            "nist_sp_800_53_controls": ["SI-4", "AU-6"],
+            "nist_csf_categories": ["DE.AE"],
+            "soc2_criteria": ["CC7.2", "CC7.3"],
+            "ai_risk_interpretation": "Optimizing alert triggers and tool integration improves detection speed and reduces analyst noise.",
+            "reguguard_compensating_strategy": "Tune detection thresholds and establish integrated telemetry feeds between security tools."
         },
         "GAO-26-107980-PROG-11": {
-            "mapped_nist_controls": ["CP-2", "IR-4", "IR-8"],
-            "mapped_soc2_criteria": ["CC7.4", "A1.2"],
-            "nist_csf_category": "RS.MI",
-            "ai_risk_interpretation": "Manual recovery runbooks across siloed departments extend MTTR during enterprise outages.",
-            "reguguard_compensating_strategy": "Execute quarterly automated disaster failovers with immutable backup validation."
+            "nist_sp_800_53_controls": ["CP-2", "IR-4", "IR-8"],
+            "nist_csf_categories": ["RS.MI"],
+            "soc2_criteria": ["CC7.4", "A1.2"],
+            "ai_risk_interpretation": "Manual operations and siloed organizations during response and recovery affect mission continuity.",
+            "reguguard_compensating_strategy": "Develop cross-department incident response playbooks and test recovery continuity regularly."
         }
     },
     "system_finding_mappings": {
         "GAO-26-107980-SYS-01": {
-            "mapped_nist_controls": ["SI-2", "RA-5"],
-            "mapped_soc2_criteria": ["CC7.1"],
-            "ai_risk_interpretation": "High-impact system with 1 remaining high-risk vulnerability past standard SLAs."
+            "nist_sp_800_53_controls": ["SI-2", "RA-5"],
+            "soc2_criteria": ["CC7.1"],
+            "ai_risk_interpretation": "High-impact system assessment identified 107 findings; 1 high-risk vulnerability remained unremediated as of July 2025."
         },
         "GAO-26-107980-SYS-02": {
-            "mapped_nist_controls": ["SA-22", "CM-6", "SI-2"],
-            "mapped_soc2_criteria": ["CC6.8", "CC7.1"],
-            "ai_risk_interpretation": "Legacy architecture dependencies defer full remediation to 2028 (49% unresolved)."
+            "nist_sp_800_53_controls": ["SA-22", "CM-6", "SI-2"],
+            "soc2_criteria": ["CC6.8", "CC7.1"],
+            "ai_risk_interpretation": "High-impact system assessment identified 65 findings; remediation planned through January 2028 with 32 findings unremediated as of July 2025."
         },
         "GAO-26-107980-SYS-03": {
-            "mapped_nist_controls": ["AC-2", "AU-6", "SI-2"],
-            "mapped_soc2_criteria": ["CC6.1", "CC7.2"],
-            "ai_risk_interpretation": "Fully remediated benchmark according to VA report (100% of 107 vulnerabilities reported remediated as of July 2025)."
+            "nist_sp_800_53_controls": ["AC-2", "AU-6", "SI-2"],
+            "soc2_criteria": ["CC6.1", "CC7.2"],
+            "ai_risk_interpretation": "High-impact system assessment identified 107 findings; VA reported all 107 findings remediated as of July 2025."
         },
         "GAO-26-107980-SYS-04": {
-            "mapped_nist_controls": ["SC-7", "CM-7", "SI-2"],
-            "mapped_soc2_criteria": ["CC6.6", "CC7.1"],
-            "ai_risk_interpretation": "1 remaining high-risk and 6 moderate-risk perimeter/network configuration weaknesses."
+            "nist_sp_800_53_controls": ["SC-7", "CM-7", "SI-2"],
+            "soc2_criteria": ["CC6.6", "CC7.1"],
+            "ai_risk_interpretation": "High-impact system assessment identified 56 findings; 1 high-risk and 6 moderate-risk vulnerabilities remained unremediated as of July 2025."
         },
         "GAO-26-107980-SYS-05": {
-            "mapped_nist_controls": ["CM-2", "AC-6", "SI-2"],
-            "mapped_soc2_criteria": ["CC6.1", "CC6.8"],
-            "ai_risk_interpretation": "90% reported remediated; 2 moderate-risk and 9 low-risk configuration items open."
+            "nist_sp_800_53_controls": ["CM-2", "AC-6", "SI-2"],
+            "soc2_criteria": ["CC6.1", "CC6.8"],
+            "ai_risk_interpretation": "High-impact system assessment identified 107 findings; 2 moderate-risk and 9 low-risk vulnerabilities remained unremediated as of July 2025."
         }
     },
     "oig_recommendation_mappings": {
         "GAO-26-107980-OIG-01": {
-            "mapped_nist_controls": ["PM-4", "CA-5"],
-            "mapped_soc2_criteria": ["CC7.4"],
-            "ai_risk_interpretation": "Unmonitored POA&M milestones prevent institutional learning and cause recurring audit citations."
+            "nist_sp_800_53_controls": ["PM-4", "CA-5"],
+            "soc2_criteria": ["CC7.4"],
+            "ai_risk_interpretation": "Unmonitored POA&M milestones prevent institutional tracking and can lead to recurring oversight findings."
         },
         "GAO-26-107980-OIG-02": {
-            "mapped_nist_controls": ["CA-3", "CM-6", "RA-5"],
-            "mapped_soc2_criteria": ["CC6.1", "CC6.8"],
-            "ai_risk_interpretation": "Absence of documented compensating controls leaves delayed vulnerabilities exposed without defense-in-depth."
+            "nist_sp_800_53_controls": ["CA-3", "CM-6", "RA-5"],
+            "soc2_criteria": ["CC6.1", "CC6.8"],
+            "ai_risk_interpretation": "Implementing mitigating controls is critical to protect systems when vulnerabilities cannot be patched within standard policy timeframes."
         }
     }
 }

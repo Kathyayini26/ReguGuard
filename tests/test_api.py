@@ -39,8 +39,8 @@ def test_real_audit_data_seeding_and_recall():
     seed_res = client.post("/api/memory/seed-real-data")
     assert seed_res.status_code == 200
     seed_data = seed_res.json()
-    assert seed_data["status"] == "success"
-    assert seed_data["ingested_records"] == 18
+    assert seed_data["breakdown"]["program_findings"] + seed_data["breakdown"]["system_findings"] + seed_data["breakdown"]["oig_recommendations"] == 18
+    assert seed_data["ingested_records"] == 29
     assert "GAO-26-107980" in seed_data["primary_source"]
 
     # 2. Inquire on a real cloud security finding area (NIST CM-2 / CM-6)

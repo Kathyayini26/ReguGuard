@@ -27,6 +27,33 @@ async def inspect_memory(hindsight: HindsightClient = Depends(get_hindsight)):
     """
     return hindsight.get_all_local_records()
 
+@router.get("/service-status")
+async def get_service_status(hindsight: HindsightClient = Depends(get_hindsight)):
+    """
+    Actively checks the live status of the configured Hindsight Cloud service,
+    reporting connectivity, authentication state, and any blockers.
+    """
+    return await hindsight.check_cloud_connection()
+
+@router.post("/recall")
+async def recall_memories(
+    query: str,
+    top_k: int = 5,
+    hindsight: HindsightClient = Depends(get_hindsight)
+):
+    """
+    Queries Hindsight long-term agent memory and returns matched precedents.
+    Explicitly indicates if no factual evidence was located for negative boundaries.
+    """
+    results = await hindsight.recall(query=query, top_k=top_k)
+    return {
+        "query": query,
+        "results_found": len(results),
+        "memories": results,
+        "information_available": len(results) > 0,
+        "disclaimer": "Recall derived from persistent Hindsight memory." if len(results) > 0 else "Information requested is absent from verified audit memory."
+    }
+
 @router.post("/seed")
 async def seed_demo_memory(hindsight: HindsightClient = Depends(get_hindsight)):
     """
@@ -157,31 +184,67 @@ async def seed_real_audit_data(hindsight: HindsightClient = Depends(get_hindsigh
     for o in oig_records:
         content = (
             f"Oversight Recommendation [{o['source_evidence']['report_number']} - {o['record_id']}]: "
+            f"Theme: {o['recommendation_theme']}. "
             f"Issuing Body: {o['issuing_body']}. Evaluated by: {o['evaluating_body']}. "
             f"Recommendation: {o['recommendation_summary']} "
-            f"Status (July 2025): {o['implementation_status_july_2025']}."
+            f"Status (July 2025): {o['implementation_status_july_2025']}. "
+            f"Underlying FISMA Reports: {'; '.join(o['original_oig_sources'])}."
         )
         metadata = {
             "record_id": o["record_id"],
             "category": "oig_recommendation",
             "issuing_body": o["issuing_body"],
+            "theme": o["recommendation_theme"],
             "status_july_2025": o["implementation_status_july_2025"],
             "source_report": o["source_evidence"]["report_number"],
+            "footnote": o["source_evidence"]["footnote"],
             "source_url": o["source_evidence"]["source_url"]
         }
         await hindsight.retain(content=content, metadata=metadata)
         loaded_count += 1
 
+    # 4. Ingest Separate ReguGuard AI Framework Analysis (Explicitly marked as derived research)
+    analysis_file = processed_dir.parent / "analysis" / "framework_mappings.json"
+    analysis_count = 0
+    if analysis_file.exists():
+        with open(analysis_file, "r", encoding="utf-8") as f:
+            analysis_data = json.load(f)
+
+        for prog_id, m in analysis_data.get("program_finding_mappings", {}).items():
+            content = (
+                f"ReguGuard Compliance Analysis [{prog_id}]: "
+                f"NIST SP 800-53 Controls: {', '.join(m['nist_sp_800_53_controls'])}. "
+                f"NIST CSF Categories: {', '.join(m['nist_csf_categories'])}. "
+                f"SOC 2 Criteria: {', '.join(m['soc2_criteria'])}. "
+                f"Risk Interpretation: {m['ai_risk_interpretation']} "
+                f"Compensating Strategy: {m['reguguard_compensating_strategy']}. "
+                f"(PROVENANCE: ReguGuard Research Analysis, NOT official GAO/VA determination)."
+            )
+            metadata = {
+                "record_id": f"ANALYSIS-{prog_id}",
+                "category": "reguguard_ai_analysis",
+                "target_record": prog_id,
+                "nist_controls": m["nist_sp_800_53_controls"],
+                "nist_csf": m["nist_csf_categories"],
+                "soc2_criteria": m["soc2_criteria"],
+                "provenance": "ReguGuard Compliance Research Analysis",
+                "is_official_gao_finding": False
+            }
+            await hindsight.retain(content=content, metadata=metadata)
+            analysis_count += 1
+
     return {
         "status": "success",
-        "ingested_records": loaded_count,
+        "ingested_records": loaded_count + analysis_count,
         "breakdown": {
             "program_findings": len(prog_records),
             "system_findings": len(sys_records),
-            "oig_recommendations": len(oig_records)
+            "oig_recommendations": len(oig_records),
+            "ai_framework_analyses": analysis_count
         },
         "primary_source": "GAO-26-107980",
-        "message": f"Successfully ingested {loaded_count} authentic audit records into Hindsight memory"
+        "message": f"Successfully ingested {loaded_count} authentic audit records and {analysis_count} isolated framework analyses into Hindsight memory"
     }
+
 
 

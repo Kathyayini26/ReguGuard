@@ -155,8 +155,14 @@ def test_program_findings_metrics(program_findings):
     assert len(concur_areas) == 9
 
 def test_program_documented_delays(program_findings):
-    """Verifies documented delay reporting in Medical Devices, Cyber Protection, and Cyber Response."""
+    """
+    Verifies documented delay reporting in Medical Devices, Cyber Protection, and Cyber Response.
+    GAO report line 5328 explicitly states ongoing actions for 3 findings experienced delays:
+    Medical Devices, Cyber Protection, and Cyber Response and Recovery.
+    Cyber Detection date change (Table 4 vs 6) is not classified under this specific delay text.
+    """
     delayed_findings = {p["finding_area"]: p for p in program_findings if p["delay_documented"]}
+    assert len(delayed_findings) == 3, f"Expected exactly 3 delayed findings per GAO line 5328, got {len(delayed_findings)}"
     assert "Medical Devices" in delayed_findings
     assert delayed_findings["Medical Devices"]["estimated_remediation_date"] == "May 2027"
 
@@ -197,9 +203,21 @@ def test_oig_recommendations_themes_and_sources(oig_recommendations):
 # ==============================================================================
 
 def test_framework_analysis_separation_and_disclaimer(framework_analysis):
-    """Verifies that AI analysis is strictly isolated with mandatory disclaimer."""
+    """Verifies that AI analysis is strictly isolated with separated framework categories and disclaimer."""
     disclaimer = framework_analysis["analysis_metadata"]["disclaimer"]
     assert "NOT official findings or determinations made by GAO or VA" in disclaimer
     assert len(framework_analysis["program_finding_mappings"]) == 11
     assert len(framework_analysis["system_finding_mappings"]) == 5
     assert len(framework_analysis["oig_recommendation_mappings"]) == 2
+
+    # Check distinct separated framework keys
+    meta = framework_analysis["analysis_metadata"]["frameworks_separated"]
+    assert meta["primary_control_framework"] == "NIST SP 800-53 Rev. 5"
+    assert meta["risk_tier_framework"] == "NIST Cybersecurity Framework (CSF) 2.0"
+    assert meta["commercial_crosswalk_framework"] == "AICPA SOC 2 Type II (Trust Services Criteria 2017)"
+
+    for prog_id, mapping in framework_analysis["program_finding_mappings"].items():
+        assert "nist_sp_800_53_controls" in mapping
+        assert "nist_csf_categories" in mapping
+        assert "soc2_criteria" in mapping
+

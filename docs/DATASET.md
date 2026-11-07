@@ -56,10 +56,11 @@ The primary oversight dataset is partitioned into three distinct, verified JSON 
 ## 3. Separate ReguGuard AI & Compliance Analysis (`data/analysis/framework_mappings.json`)
 
 To preserve documentation integrity, regulatory interpretations are isolated from official findings:
-- **NIST SP 800-53 Rev. 5 Controls:** e.g., `CA-7`, `CM-2`, `CM-6`, `AC-2`, `AC-6`, `SC-7`, `SI-2`, `PM-4`.
-- **SOC 2 Type II Crosswalks:** e.g., `CC1.1`, `CC2.1`, `CC6.1`, `CC6.6`, `CC6.8`, `CC7.1`, `CC7.4`.
-- **AI Risk Interpretations:** Diagnostic reasoning regarding root causes (siloed teams, legacy MUMPS dependencies, alert fatigue).
-- **Compensating Control Recommendations:** Practical engineering mechanisms (policy-as-code linting, KMS CloudTrail digests, micro-segmentation).
+- **NIST SP 800-53 Rev. 5 Controls:** e.g., `CA-7`, `CM-2`, `CM-6`, `AC-2`, `AC-6`, `SC-7`, `SI-2`, `PM-1`, `RA-3`.
+- **NIST Cybersecurity Framework (CSF) 2.0 Categories:** e.g., `GV.PO`, `GV.GO`, `ID.RA`, `GV.RR`, `DE.CM`, `PR.PS`, `PR.DS`, `PR.AA`, `DE.AE`, `RS.MI`.
+- **AICPA SOC 2 Type II Criteria:** e.g., `CC1.1`, `CC2.1`, `CC3.1`, `CC6.1`, `CC6.6`, `CC6.8`, `CC7.1`, `CC7.4`.
+- **AI Risk Interpretations:** Diagnostic reasoning regarding root causes (siloed teams, legacy system constraints, alert fatigue).
+- **Compensating Control Recommendations:** Practical engineering mechanisms (standardized SLAs, network segmentation, zero trust patterns).
 
 ---
 

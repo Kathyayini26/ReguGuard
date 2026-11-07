@@ -35,7 +35,7 @@ Verified directly against **GAO-26-107980 Table 1, Table 4, Table 6**, and lines
 | `GAO-26-107980-PROG-07` | Cloud Security | VA needs to consistently apply cloud configurations | Concur | 6 | 2 (33%) | 9/30/2025* | Exact Match |
 | `GAO-26-107980-PROG-08` | Shadow IT | Shadow IT introduces unaccounted-for risk | Concur | 4 | 1 (25%) | 2/28/2026 | Exact Match |
 | `GAO-26-107980-PROG-09` | Cyber Protection | Enhance protections by implementing zero trust architecture | Concur | 7 | 1 (14%) | FY 2026 (Delayed) | Exact Match |
-| `GAO-26-107980-PROG-10` | Cyber Detection | Opportunities to optimize tools, alert triggers, and integration | Concur | 5 | 1 (20%) | 9/30/2026 (Delayed) | Exact Match |
+| `GAO-26-107980-PROG-10` | Cyber Detection | Opportunities to optimize tools, alert triggers, and integration | Concur | 5 | 1 (20%) | 9/30/2026 | Exact Match |
 | `GAO-26-107980-PROG-11` | Cyber Response and Recovery | Siloed organizations and manual operations hinder continuity | Concur | 4 | 2 (50%) | FY 2026 (Delayed) | Exact Match |
 
 **Summary Verification:** Total planned actions = **55**. Total completed as of July 2025 = **20**. Total ongoing/delayed = **35**. Matches report lines 5130–5135 verbatim.

@@ -263,8 +263,8 @@
     "remediation_actions_in_progress_july_2025": 4,
     "estimated_remediation_date": "9/30/2026",
     "october_2024_remediation_date": "9/30/2025",
-    "delay_documented": true,
-    "delay_reasons": "Date pushed from 9/30/2025 in October 2024 plan to 9/30/2026 in July 2025 report.",
+    "delay_documented": false,
+    "delay_reasons": null,
     "source_evidence": {
       "report_number": "GAO-26-107980",
       "publication_date": "December 11, 2025",
@@ -275,8 +275,8 @@
         "Table 6"
       ],
       "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
-      "page_or_paragraph": "Lines 4244-4250, 4882-4887, 5295-5304",
-      "extraction_mode": "Directly reported from GAO-26-107980 tables"
+      "page_or_paragraph": "Lines 4244-4250, 4882-4887, 5295-5304, 5328-5335",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables (Note: GAO line 5328 explicitly designates delays in 3 findings: Medical Devices, Cyber Protection, Cyber Response and Recovery)"
     }
   },
   {
