@@ -69,3 +69,54 @@ async def seed_demo_memory(hindsight: HindsightClient = Depends(get_hindsight)):
     )
 
     return {"status": "seeded", "message": "Successfully seeded Session 1 historical memory into Hindsight"}
+
+@router.post("/seed-real-data")
+async def seed_real_audit_data(hindsight: HindsightClient = Depends(get_hindsight)):
+    """
+    Ingests all 18 authentic public oversight records (GAO-26-107980, CPAG GAO-23-104705, etc.)
+    into Vectorize Hindsight memory with complete verifiable provenance.
+    """
+    import json
+    from pathlib import Path
+
+    findings_file = Path(__file__).resolve().parent.parent.parent / "data" / "processed" / "real_audit_findings.json"
+    if not findings_file.exists():
+        return {"status": "error", "message": f"Dataset file not found at {findings_file}"}
+
+    with open(findings_file, "r", encoding="utf-8") as f:
+        records = json.load(f)
+
+    loaded_count = 0
+    for item in records:
+        content = (
+            f"Audit Finding [{item['report_number']} - {item['id']}]: "
+            f"Agency: {item['agency']}. Finding Area: {item['finding_area']}. "
+            f"Weakness: {item['identified_weakness']} "
+            f"Auditor Recommendation: {item['auditor_recommendation']} "
+            f"Remediation Action: {item['remediation_action']} "
+            f"Status: {item['implementation_status']} ({item['status_details']}). "
+            f"Primary Controls: {', '.join(item['framework_reference']['control_codes'])}."
+        )
+        metadata = {
+            "record_id": item["id"],
+            "agency": item["agency"],
+            "report_number": item["report_number"],
+            "publication_date": item["publication_date"],
+            "finding_area": item["finding_area"],
+            "implementation_status": item["implementation_status"],
+            "status_details": item["status_details"],
+            "control_codes": item["framework_reference"]["control_codes"],
+            "soc2_crosswalk": item["framework_reference"]["soc2_crosswalk"],
+            "provenance_url": item["provenance"]["source_url"],
+            "provenance_section": item["provenance"]["page_or_section"]
+        }
+        await hindsight.retain(content=content, metadata=metadata)
+        loaded_count += 1
+
+    return {
+        "status": "success",
+        "ingested_records": loaded_count,
+        "primary_source": "GAO-26-107980 & GAO-23-104705",
+        "message": f"Successfully ingested {loaded_count} authentic audit records into Hindsight memory"
+    }
+

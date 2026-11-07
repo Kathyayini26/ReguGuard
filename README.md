@@ -11,65 +11,76 @@
 
 ## 1. Overview
 
-Enterprise software and FinTech organizations spend hundreds of thousands of dollars on annual compliance audits (SOC 2 Type II, ISO 27001, HIPAA, PCI-DSS). However, third-party audits are not deterministic checklists; they are subjective negotiations between company engineers and external human audit firms (e.g., Schellman, Coalfire, Big 4).
+Enterprise software, critical infrastructure, and public-sector organizations spend hundreds of thousands of dollars on annual compliance audits (NIST SP 800-53, FISMA, SOC 2 Type II, ISO 27001). However, audits are not deterministic checklists; they are subjective negotiations between engineering teams and external oversight bodies (GAO, OIG, Schellman, Coalfire, Big 4).
 
-When auditors issue **Management Exceptions** on ambiguous controls (e.g., direct engineer access to production replicas, shared service credentials), engineering teams must defend their architecture using **approved compensating controls**.
+When oversight bodies issue **Audit Findings or Deficiencies** on complex controls (e.g., continuous configuration monitoring drift, legacy system patch delays, cloud tenant governance), engineering teams must implement defensible **remediation plans or compensating controls**.
 
-Because audit defense histories, negotiated exceptions, and auditor preferences are lost across annual cycles and team turnover, organizations suffer from **institutional amnesia**:
-- New engineers repeatedly propose remediation plans that auditors previously rejected.
-- Teams waste months re-architecting systems that were already covered by previously approved compensating controls.
+Because remediation histories, rejected proposals, and technical delays are scattered across historical reports, organizations suffer from **institutional amnesia**:
+- New engineers repeatedly propose remediation plans that auditors previously rejected or that caused multi-year schedule slippages.
+- Teams fail to leverage historically accepted compensating controls, repeating identical audit findings across cycles.
 
-**ReguGuard** is an AI-powered compliance intelligence agent that remembers historical audit exceptions, auditor firm preferences, and accepted compensating controls—empowering companies to defend their infrastructure with precedent-backed evidence and eliminate recurring audit friction.
+**ReguGuard** is an AI-powered compliance intelligence agent that remembers historical audit exceptions, auditor precedents, and authentic remediation outcomes—empowering compliance officers and SREs to defend their infrastructure with precedent-backed evidence and eliminate recurring audit friction.
 
 ---
 
-## 2. Core Architecture
+## 2. Authentic Public Oversight Dataset
+
+ReguGuard is evaluated on **authentic, publicly documented federal oversight records** with verifiable provenance:
+- **GAO-26-107980:** Independent MITRE Corporation assessment of the Department of Veterans Affairs cybersecurity posture (December 2025). Evaluates 11 Programmatic Finding Areas, 5 High-Impact IT Systems, 1,215 vulnerabilities, and 55 planned remediation actions.
+- **GAO-23-104705 (CPAG):** Cybersecurity Program Audit Guide defining standard federal audit methodology across Governance, Identify, Protect, Detect, Respond, and Recover.
+- **Dual Framework Architecture:** Primary alignment with **NIST SP 800-53 Rev. 5** and **NIST CSF 2.0**, with transparent crosswalks to **SOC 2 Trust Services Criteria (TSC)**.
+
+See [docs/DATASET.md](docs/DATASET.md) for full provenance records, status definitions, and finding inventories.
+
+---
+
+## 3. Core Architecture
 
 ```
-                                [ Auditor Inquiry / Management Exception ]
-                                                    │
-                                                    ▼
+                                [ Auditor Inquiry / Finding Area ]
+                                                │
+                                                ▼
 ┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ 1. CONTROL INVARIANT PARSER                                                                            │
-│    • Maps inquiries to standard regulatory frameworks (AICPA SOC 2 CC6.1 - CC6.8, NIST SP 800-53)      │
-│    • Identifies affected resources and core compliance risk                                           │
+│    • Maps inquiries to NIST SP 800-53 Rev. 5 (CA-7, CM-2, CM-6, AC-2, SI-2) & SOC 2 Crosswalks (CC6.1) │
+│    • Identifies affected resources, framework invariant, and compliance risk                          │
 └────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-                                                    │
-                                                    ▼
+                                                │
+                                                ▼
 ┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ 2. HINDSIGHT MEMORY RETRIEVAL (recall_async)                                                           │
-│    • Queries dedicated Bank ID by control invariant & auditor firm profile                             │
-│    • Retrieves: Historical auditor determinations, approved compensating controls, rejected proposals │
+│    • Queries dedicated Bank ID by control invariant & oversight profile                                │
+│    • Retrieves: Authentic remediation records, schedule slippage warnings, accepted precedents         │
 └────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-                                                    │
-                                                    ▼
+                                                │
+                                                ▼
 ┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│ 3. DIAGNOSTIC REASONING AGENT (Groq API - Qwen3-32B / GPT-OSS-120B)                                    │
+│ 3. DIAGNOSTIC REASONING AGENT (Groq API - Qwen3-32B / Llama 3)                                         │
 │    • Synthesizes Evidence-Backed Precedent Briefing:                                                   │
-│      - 🟢 Approved Compensating Control (Precedent reference)                                         │
-│      - 🔴 Anti-Pattern Warning ("DO NOT propose X; firm rejected this in 2025")                        │
+│      - 🟢 Approved Precedent (Official GAO/OIG verification reference)                                 │
+│      - 🔴 Anti-Pattern Warning ("DO NOT propose manual reviews; causes recurring milestone slippage") │
 │      - Evidence Tier: Confirmed / Likely / Unknown                                                     │
 └────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-                                                    │
-                                                    ▼
+                                                │
+                                                ▼
 ┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ 4. HUMAN-IN-THE-LOOP DEFENSE CONSOLE                                                                   │
-│    • SRE / Compliance Lead reviews precedent and clicks: [Generate Compensating Control Memo]         │
-│    • Exports formal auditor defense memorandum ready for sign-off                                      │
+│    • SRE / Compliance Officer reviews briefing and clicks: [Generate Remediation Memo]                │
+│    • Exports formal defense memorandum citing historical oversight precedents                          │
 └────────────────────────────────────────────────────────────────────────────────────────────────────────┘
-                                                    │
-                                 (Post-Audit Determination Received)
-                                                    │
-                                                    ▼
+                                                │
+                             (Post-Audit Determination Received)
+                                                │
+                                                ▼
 ┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ 5. HINDSIGHT EXPERIENCE RETENTION (retain_async)                                                       │
-│    • Commits new auditor sign-off or rejection into persistent memory for next year's cycle           │
+│    • Commits new auditor sign-off or remediation outcome into persistent memory for future cycles      │
 └────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## 3. Project Structure
+## 4. Project Structure
 
 ```
 ReguGuard/
@@ -81,30 +92,36 @@ ReguGuard/
 │   ├── main.py                # FastAPI entrypoint
 │   ├── config.py              # Environment configuration & settings
 │   ├── models/
-│   │   └── schemas.py         # Pydantic schemas (Inquiry, DefenseMemo, etc.)
+│   │   └── schemas.py         # Pydantic schemas (AuditorInquiry, ControlInvariant, Provenance, etc.)
 │   ├── services/
 │   │   ├── hindsight_client.py# Vectorize Hindsight API client (retain/recall)
 │   │   ├── llm_engine.py      # Groq LLM inference wrapper
-│   │   └── control_parser.py  # Regulatory control invariant extractor
+│   │   └── control_parser.py  # NIST SP 800-53 & SOC 2 control parser
 │   └── routers/
 │       ├── audit.py           # Audit defense and triage endpoints
-│       └── memory.py          # Memory inspection and retention endpoints
+│       └── memory.py          # Memory inspection and real data seeding endpoints
+├── data/
+│   ├── raw/                   # Raw public oversight reports (GAO-26-107980.html)
+│   ├── processed/             # 18 authentic audit records with full provenance
+│   ├── metadata/              # Source catalog and audit authority inventory
+│   └── evaluation/            # Ground truth benchmark test cases
 ├── docs/
+│   ├── DATASET.md             # Dataset strategy, provenance citations, and status taxonomy
 │   ├── ARCHITECTURE.md        # Deep architectural specification
-│   ├── DEMO_SCRIPT.md         # 2-session before-and-after demonstration script
-│   └── SOC2_CONTROL_MAPPING.md# AICPA Trust Services Criteria reference
-├── tests/
-│   ├── test_control_parser.py # Unit tests for control invariant extraction
-│   ├── test_hindsight_mock.py # Unit tests for Hindsight memory loops
-│   └── test_api.py            # FastAPI integration tests
-└── synthetic_data/
-    ├── audit_scenarios.json   # Multi-session audit demonstration scenarios
-    └── soc2_baseline_controls.json # Verified baseline compensating control catalog
+│   ├── DEMO_SCRIPT.md         # 2-session demonstration script
+│   └── SOC2_CONTROL_MAPPING.md# NIST SP 800-53 to SOC 2 crosswalk reference
+├── scripts/
+│   └── build_dataset.py       # Automated authentic dataset extractor and validator
+└── tests/
+    ├── test_control_parser.py # Unit tests for NIST & SOC 2 control extraction
+    ├── test_hindsight_mock.py # Unit tests for Hindsight memory loops
+    ├── test_api.py            # Integration tests for FastAPI endpoints
+    └── fixtures/              # Test fixtures
 ```
 
 ---
 
-## 4. Getting Started
+## 5. Getting Started
 
 ### Prerequisites
 - Python 3.10+
@@ -115,7 +132,7 @@ ReguGuard/
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/kathy20075/ReguGuard.git
+git clone https://github.com/Kathyayini26/ReguGuard.git
 cd ReguGuard
 
 # 2. Create and activate virtual environment
@@ -130,12 +147,19 @@ cp .env.example .env
 # Edit .env with your actual HINDSIGHT_API_KEY and GROQ_API_KEY
 ```
 
+### Ingesting Authentic Audit Dataset
+
+```bash
+# Ingest 18 authentic GAO oversight records into Hindsight memory
+curl -X POST http://localhost:8000/api/memory/seed-real-data
+```
+
 ### Running the Backend
 
 ```bash
 uvicorn backend.main:app --reload --port 8000
 ```
-API Documentation will be available at: `http://localhost:8000/docs`
+Interactive API Documentation will be available at: `http://localhost:8000/docs`
 
 ### Running Tests
 
@@ -145,15 +169,10 @@ pytest -v
 
 ---
 
-## 5. Demonstration Workflow
-
-1. **Session 1 (Learning Phase):** An auditor issues an exception on staging IAM access. A junior engineer's manual spreadsheet proposal is rejected. A senior CISO negotiates an automated tamper-evident KMS log control that the auditor accepts. The episode is retained in Hindsight.
-2. **Session 2 (Recall Phase):** In next year's audit, a different auditor from the same firm raises a similar exception. ReguGuard triggers `recall()`, issues an **Anti-Pattern Warning** against the manual spreadsheet, and generates an official Compensating Control Memorandum citing the approved precedent.
-
----
-
 ## 6. Official Resources & References
 
+- **GAO-26-107980 Report:** [https://files.gao.gov/reports/GAO-26-107980/index.html](https://files.gao.gov/reports/GAO-26-107980/index.html)
+- **GAO Cybersecurity Program Audit Guide (GAO-23-104705):** [https://www.gao.gov/products/gao-23-104705](https://www.gao.gov/products/gao-23-104705)
 - **Hindsight Documentation:** [https://hindsight.vectorize.io/](https://hindsight.vectorize.io/)
 - **Hindsight GitHub:** [https://github.com/vectorize-io/hindsight](https://github.com/vectorize-io/hindsight)
 - **Vectorize Agent Memory:** [https://vectorize.io/what-is-agent-memory](https://vectorize.io/what-is-agent-memory)

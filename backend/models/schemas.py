@@ -6,24 +6,37 @@ def utc_now() -> datetime:
     return datetime.now(timezone.utc)
 
 class AuditorInquiry(BaseModel):
-    """Represents an incoming inquiry or exception raised by an external auditor."""
+    """Represents an incoming inquiry, deficiency, or finding raised by an oversight body or auditor."""
     inquiry_id: str = Field(..., description="Unique identifier for the inquiry")
-    auditor_firm: str = Field(..., description="Name of the external auditing firm (e.g., Schellman, Coalfire, PwC)")
-    framework: Literal["SOC2_TYPE_II", "ISO27001", "HIPAA", "PCI_DSS"] = Field("SOC2_TYPE_II", description="Applicable regulatory framework")
-    inquiry_text: str = Field(..., description="Exact inquiry or exception narrative provided by the auditor")
-    affected_resource: Optional[str] = Field(None, description="System, cluster, or repository identified in the exception")
-    severity: Literal["HIGH", "MEDIUM", "LOW"] = Field("MEDIUM", description="Inquiry audit severity")
+    auditor_firm: str = Field(..., description="Name of the auditing body (e.g., GAO, OIG, Schellman, Coalfire, PwC)")
+    framework: Literal["NIST_SP_800_53_REV5", "NIST_CSF_2_0", "SOC2_TYPE_II", "ISO27001", "FISMA"] = Field(
+        "NIST_SP_800_53_REV5", 
+        description="Applicable regulatory framework"
+    )
+    inquiry_text: str = Field(..., description="Exact finding, exception narrative, or inquiry text")
+    affected_resource: Optional[str] = Field(None, description="System, agency, cloud tenant, or repository identified")
+    severity: Literal["HIGH", "MODERATE", "LOW", "MEDIUM"] = Field("MODERATE", description="Audit finding severity")
     timestamp: datetime = Field(default_factory=utc_now)
 
 class ControlInvariant(BaseModel):
-    """Canonical regulatory control classification."""
-    control_code: str = Field(..., description="Standard control ID (e.g., CC6.1, CC6.3, CC6.8)")
+    """Canonical regulatory control classification (NIST SP 800-53 with SOC 2 crosswalk)."""
+    control_code: str = Field(..., description="Primary control ID (e.g., CA-7, CM-6, CC6.1, AC-2)")
     control_title: str = Field(..., description="Standard title of the control criteria")
+    framework: str = Field("NIST_SP_800_53_REV5", description="Primary framework for this control")
     core_risk: str = Field(..., description="Underlying security or compliance risk")
-    standard_remediation_expectation: str = Field(..., description="Textbook compliance baseline")
+    standard_remediation_expectation: str = Field(..., description="Standard compliance baseline expectation")
+    soc2_crosswalk: Optional[List[str]] = Field(default_factory=list, description="Crosswalk to SOC 2 Trust Services Criteria")
+
+class AuditProvenance(BaseModel):
+    """Verifiable public provenance metadata for authentic oversight records."""
+    source_url: str
+    source_type: str
+    page_or_section: str
+    report_number: Optional[str] = None
+    extracted_at: Optional[str] = None
 
 class CompensatingControlPrecedent(BaseModel):
-    """Historical compensating control approved by this or similar audit firm."""
+    """Historical remediation precedent or compensating control documented in oversight reports."""
     precedent_id: str
     historical_incident_id: str
     auditor_firm: str
@@ -32,18 +45,28 @@ class CompensatingControlPrecedent(BaseModel):
     description: str
     technical_mechanism: str
     evidence_artifacts_required: List[str]
+    implementation_status: Literal[
+        "Open / Not implemented",
+        "Resolved / Agreed to implement",
+        "Implemented / Closed",
+        "Partially implemented",
+        "Pending verification",
+        "Unknown / Not publicly documented"
+    ] = "Implemented / Closed"
     confidence_score: float = Field(ge=0.0, le=1.0)
+    provenance: Optional[AuditProvenance] = None
 
 class AntiPatternWarning(BaseModel):
-    """Remediation proposal that previously failed or was rejected by auditors."""
+    """Remediation proposal or implementation failure that caused audit findings or schedule delays."""
     rejected_proposal: str
     rejection_reason: str
     auditor_firm: str
     year_rejected: int
     severity: Literal["CRITICAL", "WARNING"]
+    provenance_reference: Optional[str] = None
 
 class DefenseBriefing(BaseModel):
-    """Synthesized defense recommendation presented to the compliance officer."""
+    """Synthesized defense recommendation and experiential analysis presented to compliance/security teams."""
     inquiry_id: str
     auditor_firm: str
     control_invariant: ControlInvariant
@@ -55,7 +78,7 @@ class DefenseBriefing(BaseModel):
     confidence: float
 
 class CompensatingControlMemo(BaseModel):
-    """Official formal defense memorandum generated for auditor sign-off."""
+    """Official formal defense or remediation memorandum citing historical precedent and audit evidence."""
     memo_id: str
     inquiry_id: str
     control_code: str

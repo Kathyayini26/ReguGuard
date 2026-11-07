@@ -1,0 +1,29 @@
+[
+  {
+    "test_id": "EVAL-01-CLOUD-DRIFT",
+    "description": "Evaluate retrieval of past cloud configuration drift finding and delayed remediation status",
+    "query": "Inconsistent baseline cloud security configurations across multi-cloud tenants leading to storage bucket exposure",
+    "expected_top_match_id": "GAO-26-107980-REC-02",
+    "expected_framework_code": "CM-2",
+    "expected_status": "Partially implemented",
+    "expected_historical_context": "Remediation delayed past 2025 milestone with 2 of 6 actions completed"
+  },
+  {
+    "test_id": "EVAL-02-LEGACY-CLINICAL",
+    "description": "Evaluate retrieval of unpatchable legacy systems and compensating network segmentation history",
+    "query": "Legacy electronic health record database running unsupported MUMPS code with clinical disruption patching risk",
+    "expected_top_match_id": "GAO-26-107980-SYS-02",
+    "expected_framework_code": "SC-7",
+    "expected_status": "Partially implemented",
+    "expected_historical_context": "Longest remediation delay across agency extended to 2028; requires clinical compensating micro-segmentation"
+  },
+  {
+    "test_id": "EVAL-03-POAM-OVERDUE",
+    "description": "Evaluate identification of recurring open vulnerability tracking failures without updated milestones",
+    "query": "System owners failing to track and update plan of action and milestones (POA&M) target completion dates",
+    "expected_top_match_id": "GAO-26-107980-REC-12",
+    "expected_framework_code": "CA-5",
+    "expected_status": "Open / Not implemented",
+    "expected_historical_context": "VA OIG recommendation remains open; missing updated milestones"
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "dataset_name": "ReguGuard Authentic Cybersecurity Audit Dataset",
+  "version": "1.0.0",
+  "total_verified_records": 18,
+  "primary_source": {
+    "agency": "U.S. Government Accountability Office (GAO)",
+    "report_number": "GAO-26-107980",
+    "report_title": "CYBERSECURITY: Independent Assessment and VA Response Generally Met Requirements",
+    "publication_date": "December 2025",
+    "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+    "authorizing_statute": "Strengthening VA Cybersecurity Act of 2022 (P.L. 117-257)",
+    "assessor": "MITRE Corporation & GAO"
+  },
+  "secondary_reference_framework": {
+    "agency": "U.S. Government Accountability Office (GAO)",
+    "report_number": "GAO-23-104705",
+    "report_title": "Cybersecurity Program Audit Guide (CPAG)",
+    "publication_date": "September 2023",
+    "source_url": "https://www.gao.gov/assets/gao-23-104705.pdf"
+  },
+  "framework_standards": [
+    "NIST SP 800-53 Rev. 5",
+    "NIST Cybersecurity Framework 2.0 (CSF 2.0)",
+    "Federal Information Security Modernization Act (FISMA)",
+    "AICPA SOC 2 Type II Trust Services Criteria (Crosswalk Reference)"
+  ],
+  "status_categories_used": [
+    "Open / Not implemented",
+    "Resolved / Agreed to implement",
+    "Implemented / Closed",
+    "Partially implemented",
+    "Pending verification",
+    "Unknown / Not publicly documented"
+  ],
+  "created_at": "2026-11-07"
+}
