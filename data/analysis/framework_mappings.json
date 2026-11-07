@@ -2,6 +2,8 @@
   "analysis_metadata": {
     "disclaimer": "The framework mappings, SOC 2 crosswalks, risk interpretations, and remediation suggestions below represent ReguGuard research and AI analysis. They are NOT official findings or determinations made by GAO or VA.",
     "derived_at": "2026-11-07",
+    "report_evaluated": "GAO-26-107980",
+    "publication_date": "December 11, 2025",
     "primary_framework": "NIST SP 800-53 Rev. 5 / NIST CSF 2.0",
     "crosswalk_framework": "AICPA SOC 2 Type II (TSC 2017)"
   },
@@ -192,7 +194,7 @@
         "CC6.1",
         "CC7.2"
       ],
-      "ai_risk_interpretation": "Fully remediated benchmark (100% of 107 vulnerabilities closed as of July 2025)."
+      "ai_risk_interpretation": "Fully remediated benchmark according to VA report (100% of 107 vulnerabilities reported remediated as of July 2025)."
     },
     "GAO-26-107980-SYS-04": {
       "mapped_nist_controls": [
@@ -216,7 +218,7 @@
         "CC6.1",
         "CC6.8"
       ],
-      "ai_risk_interpretation": "90% remediated; 2 moderate-risk and 9 low-risk configuration items open."
+      "ai_risk_interpretation": "90% reported remediated; 2 moderate-risk and 9 low-risk configuration items open."
     }
   },
   "oig_recommendation_mappings": {

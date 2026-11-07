@@ -8,24 +8,27 @@
     "vulnerabilities": {
       "high_risk": {
         "total": 8,
-        "remediated_july_2025": 7,
+        "reported_remediated_by_va_july_2025": 7,
         "remaining_unremediated_july_2025": 1
       },
       "moderate_risk": {
         "total": 39,
-        "remediated_july_2025": 36,
+        "reported_remediated_by_va_july_2025": 36,
         "remaining_unremediated_july_2025": 3
       },
       "low_risk": {
         "total": 60,
-        "remediated_july_2025": 53,
+        "reported_remediated_by_va_july_2025": 53,
         "remaining_unremediated_july_2025": 7
       },
-      "total_remediated_july_2025": "96 of 107 (90%)",
+      "total_reported_remediated_by_va_july_2025": "96 of 107 (90%)",
+      "reported_remediated_count": 96,
       "total_unremediated_july_2025": 11
     },
+    "verification_distinction": "VA-reported remediation as of July 2025; not independently verified as closed by GAO.",
     "source_evidence": {
       "report_number": "GAO-26-107980",
+      "publication_date": "December 11, 2025",
       "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
       "tables": [
         "Table 3",
@@ -45,24 +48,27 @@
     "vulnerabilities": {
       "high_risk": {
         "total": 3,
-        "remediated_july_2025": 3,
+        "reported_remediated_by_va_july_2025": 3,
         "remaining_unremediated_july_2025": 0
       },
       "moderate_risk": {
         "total": 22,
-        "remediated_july_2025": 13,
+        "reported_remediated_by_va_july_2025": 13,
         "remaining_unremediated_july_2025": 9
       },
       "low_risk": {
         "total": 40,
-        "remediated_july_2025": 17,
+        "reported_remediated_by_va_july_2025": 17,
         "remaining_unremediated_july_2025": 23
       },
-      "total_remediated_july_2025": "33 of 65 (51%)",
+      "total_reported_remediated_by_va_july_2025": "33 of 65 (51%)",
+      "reported_remediated_count": 33,
       "total_unremediated_july_2025": 32
     },
+    "verification_distinction": "VA-reported remediation as of July 2025; not independently verified as closed by GAO.",
     "source_evidence": {
       "report_number": "GAO-26-107980",
+      "publication_date": "December 11, 2025",
       "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
       "tables": [
         "Table 3",
@@ -82,24 +88,27 @@
     "vulnerabilities": {
       "high_risk": {
         "total": 10,
-        "remediated_july_2025": 10,
+        "reported_remediated_by_va_july_2025": 10,
         "remaining_unremediated_july_2025": 0
       },
       "moderate_risk": {
         "total": 34,
-        "remediated_july_2025": 34,
+        "reported_remediated_by_va_july_2025": 34,
         "remaining_unremediated_july_2025": 0
       },
       "low_risk": {
         "total": 63,
-        "remediated_july_2025": 63,
+        "reported_remediated_by_va_july_2025": 63,
         "remaining_unremediated_july_2025": 0
       },
-      "total_remediated_july_2025": "107 of 107 (100%)",
+      "total_reported_remediated_by_va_july_2025": "107 of 107 (100%)",
+      "reported_remediated_count": 107,
       "total_unremediated_july_2025": 0
     },
+    "verification_distinction": "VA-reported remediation as of July 2025; not independently verified as closed by GAO.",
     "source_evidence": {
       "report_number": "GAO-26-107980",
+      "publication_date": "December 11, 2025",
       "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
       "tables": [
         "Table 3",
@@ -119,24 +128,27 @@
     "vulnerabilities": {
       "high_risk": {
         "total": 7,
-        "remediated_july_2025": 6,
+        "reported_remediated_by_va_july_2025": 6,
         "remaining_unremediated_july_2025": 1
       },
       "moderate_risk": {
         "total": 23,
-        "remediated_july_2025": 17,
+        "reported_remediated_by_va_july_2025": 17,
         "remaining_unremediated_july_2025": 6
       },
       "low_risk": {
         "total": 26,
-        "remediated_july_2025": 24,
+        "reported_remediated_by_va_july_2025": 24,
         "remaining_unremediated_july_2025": 2
       },
-      "total_remediated_july_2025": "47 of 56 (84%)",
+      "total_reported_remediated_by_va_july_2025": "47 of 56 (84%)",
+      "reported_remediated_count": 47,
       "total_unremediated_july_2025": 9
     },
+    "verification_distinction": "VA-reported remediation as of July 2025; not independently verified as closed by GAO.",
     "source_evidence": {
       "report_number": "GAO-26-107980",
+      "publication_date": "December 11, 2025",
       "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
       "tables": [
         "Table 3",
@@ -156,24 +168,27 @@
     "vulnerabilities": {
       "high_risk": {
         "total": 1,
-        "remediated_july_2025": 1,
+        "reported_remediated_by_va_july_2025": 1,
         "remaining_unremediated_july_2025": 0
       },
       "moderate_risk": {
         "total": 37,
-        "remediated_july_2025": 35,
+        "reported_remediated_by_va_july_2025": 35,
         "remaining_unremediated_july_2025": 2
       },
       "low_risk": {
         "total": 69,
-        "remediated_july_2025": 60,
+        "reported_remediated_by_va_july_2025": 60,
         "remaining_unremediated_july_2025": 9
       },
-      "total_remediated_july_2025": "96 of 107 (90%)",
+      "total_reported_remediated_by_va_july_2025": "96 of 107 (90%)",
+      "reported_remediated_count": 96,
       "total_unremediated_july_2025": 11
     },
+    "verification_distinction": "VA-reported remediation as of July 2025; not independently verified as closed by GAO.",
     "source_evidence": {
       "report_number": "GAO-26-107980",
+      "publication_date": "December 11, 2025",
       "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
       "tables": [
         "Table 3",

@@ -130,10 +130,11 @@ async def seed_real_audit_data(hindsight: HindsightClient = Depends(get_hindsigh
         content = (
             f"Oversight Finding [{s['source_evidence']['report_number']} - {s['record_id']}]: "
             f"Target: {s['system_identifier']} (High-Impact). Total Findings: {s['total_findings']}. "
-            f"High-Risk Remediated: {v['high_risk']['remediated_july_2025']}/{v['high_risk']['total']}. "
-            f"Moderate-Risk Remediated: {v['moderate_risk']['remediated_july_2025']}/{v['moderate_risk']['total']}. "
-            f"Low-Risk Remediated: {v['low_risk']['remediated_july_2025']}/{v['low_risk']['total']}. "
-            f"Total Remediated July 2025: {v['total_remediated_july_2025']}. "
+            f"High-Risk Remediated (VA-Reported): {v['high_risk']['reported_remediated_by_va_july_2025']}/{v['high_risk']['total']}. "
+            f"Moderate-Risk Remediated (VA-Reported): {v['moderate_risk']['reported_remediated_by_va_july_2025']}/{v['moderate_risk']['total']}. "
+            f"Low-Risk Remediated (VA-Reported): {v['low_risk']['reported_remediated_by_va_july_2025']}/{v['low_risk']['total']}. "
+            f"Total Reported Remediated by VA July 2025: {v['total_reported_remediated_by_va_july_2025']}. "
+            f"Verification Distinction: {s['verification_distinction']} "
             f"Planned Completion Date: {s['original_estimated_remediation_date']}."
         )
         metadata = {
@@ -141,7 +142,9 @@ async def seed_real_audit_data(hindsight: HindsightClient = Depends(get_hindsigh
             "category": "system_finding",
             "system_identifier": s["system_identifier"],
             "total_findings": s["total_findings"],
-            "total_remediated_july_2025": v["total_remediated_july_2025"],
+            "total_remediated_july_2025": v["total_reported_remediated_by_va_july_2025"],
+            "reported_remediated_count": v["reported_remediated_count"],
+            "verification_distinction": s["verification_distinction"],
             "planned_date": s["original_estimated_remediation_date"],
             "source_report": s["source_evidence"]["report_number"],
             "source_tables": s["source_evidence"]["tables"],

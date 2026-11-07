@@ -3,26 +3,29 @@
     "record_id": "GAO-26-107980-OIG-01",
     "issuing_body": "Department of Veterans Affairs Office of Inspector General (VA OIG)",
     "evaluating_body": "Government Accountability Office (GAO)",
+    "recommendation_theme": "Plan of Action and Milestones (POA&M) Tracking and Updating",
     "recommendation_summary": "Ensure the department tracks and updates planned remediation documents (plans of action and milestones).",
     "implementation_status_july_2025": "Not implemented",
     "original_oig_sources": [
       "VA OIG, Federal Information Security Modernization Act Audit for Fiscal Year 2023, Audit 23-01105-69 (Washington, D.C.: May 14, 2024)",
       "VA OIG, Federal Information Security Modernization Act Audit for Fiscal Year 2024, Audit 24-01233-90 (Washington, D.C.: June 18, 2025)"
     ],
-    "gao_evaluation_context": "GAO evaluated that VA did not always update remediation dates in its plans of action and milestones (e.g. one high-risk vulnerability past due by 15 months). Implementing the OIG recommendation would help ensure needed actions are taken to protect systems.",
+    "gao_evaluation_context": "GAO evaluated that VA did not always update remediation dates in its plans of action and milestones (e.g., one high-risk vulnerability was past due by 15 months). Implementing the OIG recommendation would help ensure needed actions are taken to protect systems.",
     "source_evidence": {
       "report_number": "GAO-26-107980",
+      "publication_date": "December 11, 2025",
       "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
       "section": "VA Documented Efforts to Remediate Remaining System Findings, but Did Not Update Its Plans",
       "footnote": "Footnote 33",
       "page_or_paragraph": "Lines 3611-3616, 5397-5404, 5858-5867",
-      "extraction_mode": "Directly reported from GAO-26-107980 text"
+      "extraction_mode": "Directly reported from GAO-26-107980 text and Footnote 33"
     }
   },
   {
     "record_id": "GAO-26-107980-OIG-02",
     "issuing_body": "Department of Veterans Affairs Office of Inspector General (VA OIG)",
     "evaluating_body": "Government Accountability Office (GAO)",
+    "recommendation_theme": "Mitigating Controls for Delayed Vulnerabilities",
     "recommendation_summary": "Improve the process for resolving vulnerabilities that cannot be addressed within policy timeframes by ensuring implementation of mitigating controls.",
     "implementation_status_july_2025": "Not implemented",
     "original_oig_sources": [
@@ -32,11 +35,12 @@
     "gao_evaluation_context": "GAO found that as of July 2025, VA had not remediated two high-risk vulnerabilities over a 17 to 21-month period, although VA policy is to remediate high-risk vulnerabilities within 60 days. Ensuring implementation of mitigating controls is critical when remediation is delayed.",
     "source_evidence": {
       "report_number": "GAO-26-107980",
+      "publication_date": "December 11, 2025",
       "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
       "section": "VA Documented Efforts to Remediate Remaining System Findings, but Did Not Update Its Plans",
       "footnote": "Footnote 33",
       "page_or_paragraph": "Lines 3611-3616, 5397-5404, 5858-5867",
-      "extraction_mode": "Directly reported from GAO-26-107980 text"
+      "extraction_mode": "Directly reported from GAO-26-107980 text and Footnote 33"
     }
   }
 ]

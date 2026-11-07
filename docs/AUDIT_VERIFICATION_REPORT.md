@@ -1,6 +1,7 @@
 # ReguGuard Dataset Audit & Verification Report
 
 **Evaluated Source Document:** GAO-26-107980 (*CYBERSECURITY: Independent Assessment and VA Response Generally Met Requirements*)  
+**Official Publication Date:** December 11, 2025  
 **Source URL:** [https://files.gao.gov/reports/GAO-26-107980/index.html](https://files.gao.gov/reports/GAO-26-107980/index.html)  
 **Verification Date:** 2026-11-07  
 **Total Verified Records:** 18 (11 Program Finding Areas, 5 High-Impact Systems, 2 VA OIG Recommendations)  
@@ -11,9 +12,11 @@
 
 In accordance with strict factual verification standards:
 1. **Zero Hallucination / Zero Synthetic Data:** Every single numerical count, finding text description, concurrence stance, and milestone date is extracted directly from GAO-26-107980.
-2. **System Anonymisation Preserved:** The five systems are designated strictly as **System 1, System 2, System 3, System 4, and System 5**, adhering to GAO-26-107980 Table 3 footnote a ("*System names are not used due to the sensitivity of the systems*"). No artificial names have been assigned.
-3. **Strict Separation of Source vs. AI Analysis:** Official source findings contain exclusively what GAO and MITRE reported. Regulatory framework crosswalks (NIST SP 800-53, SOC 2 TSC) and compensating control recommendations are segregated into `data/analysis/framework_mappings.json`.
-4. **Unsupported Fields Removed:** Previous arbitrary status assumptions, generic remediation boilerplate, and invented vendor names have been entirely eliminated.
+2. **Official Publication Date Verified:** Verified as **December 11, 2025** throughout all datasets and documentation.
+3. **VA-Reported Remediation vs. Independently Verified Closure:** The report explicitly distinguishes that 379 of 442 system findings were **reported as remediated by VA as of July 2025**. They are strictly documented as VA-reported remediations and are **not** labeled as independently verified or closed by GAO.
+4. **Distinct VA OIG Recommendation Themes:** The two VA OIG recommendations are tracked as separate themes with verified provenance to Footnote 33 and the FY2023 and FY2024 FISMA audit reports.
+5. **System Anonymisation Preserved:** The five systems are designated strictly as **System 1, System 2, System 3, System 4, and System 5**, adhering to GAO-26-107980 Table 3 footnote a (*"System names are not used due to the sensitivity of the systems"*). No artificial names have been assigned.
+6. **Strict Separation of Source vs. AI Analysis:** Official source findings contain exclusively what GAO and MITRE reported. Regulatory framework crosswalks (NIST SP 800-53, SOC 2 TSC) and compensating control recommendations are segregated into `data/analysis/framework_mappings.json`.
 
 ---
 
@@ -41,9 +44,10 @@ Verified directly against **GAO-26-107980 Table 1, Table 4, Table 6**, and lines
 
 ## 3. Dataset B: High-Impact Information Systems (5 Records)
 
-Verified directly against **GAO-26-107980 Table 3, Table 5**, and report text lines 4680–4755, 4985–5125.
+Verified directly against **GAO-26-107980 Table 3, Table 5**, and report text lines 4680–4755, 4985–5125.  
+*All figures represent VA-reported remediation progress as of July 2025.*
 
-| Record ID | System Identifier | Total Findings | High-Risk Remediated | Mod-Risk Remediated | Low-Risk Remediated | Total Remediated (July 2025) | Planned Completion Date | Verification Status |
+| Record ID | System Identifier | Total Findings | High-Risk Remediated (VA-Reported) | Mod-Risk Remediated (VA-Reported) | Low-Risk Remediated (VA-Reported) | Total Remediated (July 2025) | Planned Completion Date | Verification Status |
 |---|---|---|---|---|---|---|---|---|
 | `GAO-26-107980-SYS-01` | System 1 | 107 | 7 of 8 | 36 of 39 | 53 of 60 | 96 of 107 (90%) | 12/31/2025 | Exact Match |
 | `GAO-26-107980-SYS-02` | System 2 | 65 | 3 of 3 | 13 of 22 | 17 of 40 | 33 of 65 (51%) | 01/02/2028 | Exact Match |
@@ -52,11 +56,11 @@ Verified directly against **GAO-26-107980 Table 3, Table 5**, and report text li
 | `GAO-26-107980-SYS-05` | System 5 | 107 | 1 of 1 | 35 of 37 | 60 of 69 | 96 of 107 (90%) | 12/31/2024 | Exact Match |
 
 **Summary Verification:**
-- Total System Findings: $107 + 65 + 107 + 56 + 107 = \mathbf{442}$.
-- High-Risk Vulnerabilities: $8 + 3 + 10 + 7 + 1 = \mathbf{29}$ (27 remediated by July 2025, 93%).
-- Moderate-Risk Vulnerabilities: $39 + 22 + 34 + 23 + 37 = \mathbf{155}$ (135 remediated by July 2025).
-- Low-Risk Vulnerabilities: $60 + 40 + 63 + 26 + 69 = \mathbf{258}$ (217 remediated by July 2025).
-- Total System Remediated: $\mathbf{379 	ext{ of } 442}$ (86%). Matches report lines 4960–4974 verbatim.
+- Total System Findings: 107 + 65 + 107 + 56 + 107 = 442.
+- High-Risk Vulnerabilities: 8 + 3 + 10 + 7 + 1 = 29 (27 reported remediated by July 2025, 93%).
+- Moderate-Risk Vulnerabilities: 39 + 22 + 34 + 23 + 37 = 155 (135 reported remediated by July 2025).
+- Low-Risk Vulnerabilities: 60 + 40 + 63 + 26 + 69 = 258 (217 reported remediated by July 2025).
+- Total System Reported Remediated: 379 of 442 (86%). Matches report lines 4960–4974 verbatim.
 
 ---
 
@@ -64,10 +68,10 @@ Verified directly against **GAO-26-107980 Table 3, Table 5**, and report text li
 
 Verified directly against **GAO-26-107980 Section 4 (lines 5397–5404), Executive Summary (lines 3611–3616), and Footnote 33 (lines 5858–5867)**.
 
-| Record ID | Issuing Oversight Body | Summary of Documented Recommendation | Status (July 2025) | Underlying FISMA Audit Citations | Verification Status |
+| Record ID | Issuing Oversight Body | Recommendation Theme | Status (July 2025) | Underlying FISMA Audit Citations | Verification Status |
 |---|---|---|---|---|---|
-| `GAO-26-107980-OIG-01` | VA OIG | Ensure the department tracks and updates planned remediation documents (POA&Ms) | `Not implemented` | VA OIG Audit 23-01105-69 (FY23) & Audit 24-01233-90 (FY24) | Exact Match |
-| `GAO-26-107980-OIG-02` | VA OIG | Improve process for resolving vulnerabilities that cannot be addressed within policy timeframes by ensuring implementation of mitigating controls | `Not implemented` | VA OIG Audit 23-01105-69 (FY23) & Audit 24-01233-90 (FY24) | Exact Match |
+| `GAO-26-107980-OIG-01` | VA OIG | POA&M Tracking and Updating | `Not implemented` | VA OIG Audit 23-01105-69 (FY23) & Audit 24-01233-90 (FY24) | Exact Match |
+| `GAO-26-107980-OIG-02` | VA OIG | Mitigating Controls for Delayed Vulnerabilities | `Not implemented` | VA OIG Audit 23-01105-69 (FY23) & Audit 24-01233-90 (FY24) | Exact Match |
 
 ---
 

@@ -1,11 +1,10 @@
 """
 ReguGuard Ground Truth Dataset Generator
 Faithfully extracts records directly from GAO Report GAO-26-107980:
-- data/processed/program_findings.json (11 MITRE Program Finding Areas from Tables 1, 4, 6)
-- data/processed/system_findings.json (5 Anonymised High-Impact Systems from Tables 3, 5)
-- data/processed/oig_recommendations.json (2 VA OIG Recommendations from Section 4 and Footnote 33)
-- data/analysis/framework_mappings.json (Separate AI & Expert Crosswalks)
-- docs/AUDIT_VERIFICATION_REPORT.md (Record-by-record verification audit)
+- Official Report Number: GAO-26-107980
+- Official Title: CYBERSECURITY: Independent Assessment and VA Response Generally Met Requirements
+- Official Publication Date: December 11, 2025
+- Official Source URL: https://files.gao.gov/reports/GAO-26-107980/index.html
 """
 
 import json
@@ -21,6 +20,7 @@ DATA_ANALYSIS_DIR.mkdir(parents=True, exist_ok=True)
 DOCS_DIR.mkdir(parents=True, exist_ok=True)
 
 REPORT_NO = "GAO-26-107980"
+PUBLICATION_DATE = "December 11, 2025"
 REPORT_URL = "https://files.gao.gov/reports/GAO-26-107980/index.html"
 
 # ==============================================================================
@@ -45,6 +45,7 @@ PROGRAM_FINDINGS = [
         "delay_reasons": None,
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 1", "Table 4", "Table 6"],
             "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
@@ -68,6 +69,7 @@ PROGRAM_FINDINGS = [
         "delay_reasons": None,
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 1", "Table 4", "Table 6"],
             "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
@@ -91,6 +93,7 @@ PROGRAM_FINDINGS = [
         "delay_reasons": None,
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 1", "Table 4", "Table 6"],
             "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
@@ -114,6 +117,7 @@ PROGRAM_FINDINGS = [
         "delay_reasons": None,
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 1", "Table 4", "Table 6"],
             "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
@@ -137,6 +141,7 @@ PROGRAM_FINDINGS = [
         "delay_reasons": None,
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 1", "Table 4", "Table 6"],
             "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
@@ -160,6 +165,7 @@ PROGRAM_FINDINGS = [
         "delay_reasons": "Experienced delays due to pending modernization efforts and staff cuts, as well as awaiting decisions on alternatives, among other things.",
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 1", "Table 4", "Table 6"],
             "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
@@ -183,6 +189,7 @@ PROGRAM_FINDINGS = [
         "delay_reasons": None,
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 1", "Table 4", "Table 6"],
             "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
@@ -206,6 +213,7 @@ PROGRAM_FINDINGS = [
         "delay_reasons": None,
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 1", "Table 4", "Table 6"],
             "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
@@ -229,6 +237,7 @@ PROGRAM_FINDINGS = [
         "delay_reasons": "Experienced delays due to pending modernization efforts and staff cuts, as well as awaiting decisions on alternatives, among other things.",
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 1", "Table 4", "Table 6"],
             "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
@@ -252,6 +261,7 @@ PROGRAM_FINDINGS = [
         "delay_reasons": "Date pushed from 9/30/2025 in October 2024 plan to 9/30/2026 in July 2025 report.",
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 1", "Table 4", "Table 6"],
             "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
@@ -275,6 +285,7 @@ PROGRAM_FINDINGS = [
         "delay_reasons": "Experienced delays due to pending modernization efforts and staff cuts, as well as awaiting decisions on alternatives, among other things.",
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 1", "Table 4", "Table 6"],
             "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
@@ -287,6 +298,8 @@ PROGRAM_FINDINGS = [
 # ==============================================================================
 # DATASET B: System Findings (5 Anonymised High-Impact Systems)
 # Source: GAO-26-107980, Table 3 (Findings & Plan Dates), Table 5 (July 2025 Progress)
+# Note: Remediation figures represent VA-reported remediation as of July 2025.
+#       They are NOT labeled as independently verified closures.
 # ==============================================================================
 SYSTEM_FINDINGS = [
     {
@@ -298,24 +311,27 @@ SYSTEM_FINDINGS = [
         "vulnerabilities": {
             "high_risk": {
                 "total": 8,
-                "remediated_july_2025": 7,
+                "reported_remediated_by_va_july_2025": 7,
                 "remaining_unremediated_july_2025": 1
             },
             "moderate_risk": {
                 "total": 39,
-                "remediated_july_2025": 36,
+                "reported_remediated_by_va_july_2025": 36,
                 "remaining_unremediated_july_2025": 3
             },
             "low_risk": {
                 "total": 60,
-                "remediated_july_2025": 53,
+                "reported_remediated_by_va_july_2025": 53,
                 "remaining_unremediated_july_2025": 7
             },
-            "total_remediated_july_2025": "96 of 107 (90%)",
+            "total_reported_remediated_by_va_july_2025": "96 of 107 (90%)",
+            "reported_remediated_count": 96,
             "total_unremediated_july_2025": 11
         },
+        "verification_distinction": "VA-reported remediation as of July 2025; not independently verified as closed by GAO.",
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 3", "Table 5"],
             "section": "VA Reported Remediating Most Findings for the Five Systems, but Challenges Remain",
@@ -332,24 +348,27 @@ SYSTEM_FINDINGS = [
         "vulnerabilities": {
             "high_risk": {
                 "total": 3,
-                "remediated_july_2025": 3,
+                "reported_remediated_by_va_july_2025": 3,
                 "remaining_unremediated_july_2025": 0
             },
             "moderate_risk": {
                 "total": 22,
-                "remediated_july_2025": 13,
+                "reported_remediated_by_va_july_2025": 13,
                 "remaining_unremediated_july_2025": 9
             },
             "low_risk": {
                 "total": 40,
-                "remediated_july_2025": 17,
+                "reported_remediated_by_va_july_2025": 17,
                 "remaining_unremediated_july_2025": 23
             },
-            "total_remediated_july_2025": "33 of 65 (51%)",
+            "total_reported_remediated_by_va_july_2025": "33 of 65 (51%)",
+            "reported_remediated_count": 33,
             "total_unremediated_july_2025": 32
         },
+        "verification_distinction": "VA-reported remediation as of July 2025; not independently verified as closed by GAO.",
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 3", "Table 5"],
             "section": "VA Reported Remediating Most Findings for the Five Systems, but Challenges Remain",
@@ -366,24 +385,27 @@ SYSTEM_FINDINGS = [
         "vulnerabilities": {
             "high_risk": {
                 "total": 10,
-                "remediated_july_2025": 10,
+                "reported_remediated_by_va_july_2025": 10,
                 "remaining_unremediated_july_2025": 0
             },
             "moderate_risk": {
                 "total": 34,
-                "remediated_july_2025": 34,
+                "reported_remediated_by_va_july_2025": 34,
                 "remaining_unremediated_july_2025": 0
             },
             "low_risk": {
                 "total": 63,
-                "remediated_july_2025": 63,
+                "reported_remediated_by_va_july_2025": 63,
                 "remaining_unremediated_july_2025": 0
             },
-            "total_remediated_july_2025": "107 of 107 (100%)",
+            "total_reported_remediated_by_va_july_2025": "107 of 107 (100%)",
+            "reported_remediated_count": 107,
             "total_unremediated_july_2025": 0
         },
+        "verification_distinction": "VA-reported remediation as of July 2025; not independently verified as closed by GAO.",
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 3", "Table 5"],
             "section": "VA Reported Remediating Most Findings for the Five Systems, but Challenges Remain",
@@ -400,24 +422,27 @@ SYSTEM_FINDINGS = [
         "vulnerabilities": {
             "high_risk": {
                 "total": 7,
-                "remediated_july_2025": 6,
+                "reported_remediated_by_va_july_2025": 6,
                 "remaining_unremediated_july_2025": 1
             },
             "moderate_risk": {
                 "total": 23,
-                "remediated_july_2025": 17,
+                "reported_remediated_by_va_july_2025": 17,
                 "remaining_unremediated_july_2025": 6
             },
             "low_risk": {
                 "total": 26,
-                "remediated_july_2025": 24,
+                "reported_remediated_by_va_july_2025": 24,
                 "remaining_unremediated_july_2025": 2
             },
-            "total_remediated_july_2025": "47 of 56 (84%)",
+            "total_reported_remediated_by_va_july_2025": "47 of 56 (84%)",
+            "reported_remediated_count": 47,
             "total_unremediated_july_2025": 9
         },
+        "verification_distinction": "VA-reported remediation as of July 2025; not independently verified as closed by GAO.",
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 3", "Table 5"],
             "section": "VA Reported Remediating Most Findings for the Five Systems, but Challenges Remain",
@@ -434,24 +459,27 @@ SYSTEM_FINDINGS = [
         "vulnerabilities": {
             "high_risk": {
                 "total": 1,
-                "remediated_july_2025": 1,
+                "reported_remediated_by_va_july_2025": 1,
                 "remaining_unremediated_july_2025": 0
             },
             "moderate_risk": {
                 "total": 37,
-                "remediated_july_2025": 35,
+                "reported_remediated_by_va_july_2025": 35,
                 "remaining_unremediated_july_2025": 2
             },
             "low_risk": {
                 "total": 69,
-                "remediated_july_2025": 60,
+                "reported_remediated_by_va_july_2025": 60,
                 "remaining_unremediated_july_2025": 9
             },
-            "total_remediated_july_2025": "96 of 107 (90%)",
+            "total_reported_remediated_by_va_july_2025": "96 of 107 (90%)",
+            "reported_remediated_count": 96,
             "total_unremediated_july_2025": 11
         },
+        "verification_distinction": "VA-reported remediation as of July 2025; not independently verified as closed by GAO.",
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "tables": ["Table 3", "Table 5"],
             "section": "VA Reported Remediating Most Findings for the Five Systems, but Challenges Remain",
@@ -462,35 +490,39 @@ SYSTEM_FINDINGS = [
 ]
 
 # ==============================================================================
-# DATASET C: OIG Recommendations (2 VA OIG Recommendations discussed by GAO)
+# DATASET C: OIG Recommendations (2 Distinct VA OIG Recommendation Themes)
 # Source: GAO-26-107980, Executive Summary (Lines 3611-3616),
 #         Report Section 4 (Lines 5397-5404), Footnote 33 (Lines 5858-5867)
+# Note: Preserves distinct themes and provenance to FY23 and FY24 FISMA audits.
 # ==============================================================================
 OIG_RECOMMENDATIONS = [
     {
         "record_id": "GAO-26-107980-OIG-01",
         "issuing_body": "Department of Veterans Affairs Office of Inspector General (VA OIG)",
         "evaluating_body": "Government Accountability Office (GAO)",
+        "recommendation_theme": "Plan of Action and Milestones (POA&M) Tracking and Updating",
         "recommendation_summary": "Ensure the department tracks and updates planned remediation documents (plans of action and milestones).",
         "implementation_status_july_2025": "Not implemented",
         "original_oig_sources": [
             "VA OIG, Federal Information Security Modernization Act Audit for Fiscal Year 2023, Audit 23-01105-69 (Washington, D.C.: May 14, 2024)",
             "VA OIG, Federal Information Security Modernization Act Audit for Fiscal Year 2024, Audit 24-01233-90 (Washington, D.C.: June 18, 2025)"
         ],
-        "gao_evaluation_context": "GAO evaluated that VA did not always update remediation dates in its plans of action and milestones (e.g. one high-risk vulnerability past due by 15 months). Implementing the OIG recommendation would help ensure needed actions are taken to protect systems.",
+        "gao_evaluation_context": "GAO evaluated that VA did not always update remediation dates in its plans of action and milestones (e.g., one high-risk vulnerability was past due by 15 months). Implementing the OIG recommendation would help ensure needed actions are taken to protect systems.",
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "section": "VA Documented Efforts to Remediate Remaining System Findings, but Did Not Update Its Plans",
             "footnote": "Footnote 33",
             "page_or_paragraph": "Lines 3611-3616, 5397-5404, 5858-5867",
-            "extraction_mode": "Directly reported from GAO-26-107980 text"
+            "extraction_mode": "Directly reported from GAO-26-107980 text and Footnote 33"
         }
     },
     {
         "record_id": "GAO-26-107980-OIG-02",
         "issuing_body": "Department of Veterans Affairs Office of Inspector General (VA OIG)",
         "evaluating_body": "Government Accountability Office (GAO)",
+        "recommendation_theme": "Mitigating Controls for Delayed Vulnerabilities",
         "recommendation_summary": "Improve the process for resolving vulnerabilities that cannot be addressed within policy timeframes by ensuring implementation of mitigating controls.",
         "implementation_status_july_2025": "Not implemented",
         "original_oig_sources": [
@@ -500,11 +532,12 @@ OIG_RECOMMENDATIONS = [
         "gao_evaluation_context": "GAO found that as of July 2025, VA had not remediated two high-risk vulnerabilities over a 17 to 21-month period, although VA policy is to remediate high-risk vulnerabilities within 60 days. Ensuring implementation of mitigating controls is critical when remediation is delayed.",
         "source_evidence": {
             "report_number": REPORT_NO,
+            "publication_date": PUBLICATION_DATE,
             "source_url": REPORT_URL,
             "section": "VA Documented Efforts to Remediate Remaining System Findings, but Did Not Update Its Plans",
             "footnote": "Footnote 33",
             "page_or_paragraph": "Lines 3611-3616, 5397-5404, 5858-5867",
-            "extraction_mode": "Directly reported from GAO-26-107980 text"
+            "extraction_mode": "Directly reported from GAO-26-107980 text and Footnote 33"
         }
     }
 ]
@@ -517,6 +550,8 @@ FRAMEWORK_ANALYSIS = {
     "analysis_metadata": {
         "disclaimer": "The framework mappings, SOC 2 crosswalks, risk interpretations, and remediation suggestions below represent ReguGuard research and AI analysis. They are NOT official findings or determinations made by GAO or VA.",
         "derived_at": "2026-11-07",
+        "report_evaluated": REPORT_NO,
+        "publication_date": PUBLICATION_DATE,
         "primary_framework": "NIST SP 800-53 Rev. 5 / NIST CSF 2.0",
         "crosswalk_framework": "AICPA SOC 2 Type II (TSC 2017)"
     },
@@ -613,7 +648,7 @@ FRAMEWORK_ANALYSIS = {
         "GAO-26-107980-SYS-03": {
             "mapped_nist_controls": ["AC-2", "AU-6", "SI-2"],
             "mapped_soc2_criteria": ["CC6.1", "CC7.2"],
-            "ai_risk_interpretation": "Fully remediated benchmark (100% of 107 vulnerabilities closed as of July 2025)."
+            "ai_risk_interpretation": "Fully remediated benchmark according to VA report (100% of 107 vulnerabilities reported remediated as of July 2025)."
         },
         "GAO-26-107980-SYS-04": {
             "mapped_nist_controls": ["SC-7", "CM-7", "SI-2"],
@@ -623,7 +658,7 @@ FRAMEWORK_ANALYSIS = {
         "GAO-26-107980-SYS-05": {
             "mapped_nist_controls": ["CM-2", "AC-6", "SI-2"],
             "mapped_soc2_criteria": ["CC6.1", "CC6.8"],
-            "ai_risk_interpretation": "90% remediated; 2 moderate-risk and 9 low-risk configuration items open."
+            "ai_risk_interpretation": "90% reported remediated; 2 moderate-risk and 9 low-risk configuration items open."
         }
     },
     "oig_recommendation_mappings": {
@@ -650,7 +685,8 @@ def generate_verification_report():
     report = f"""# ReguGuard Dataset Audit & Verification Report
 
 **Evaluated Source Document:** GAO-26-107980 (*CYBERSECURITY: Independent Assessment and VA Response Generally Met Requirements*)  
-**Source URL:** [https://files.gao.gov/reports/GAO-26-107980/index.html](https://files.gao.gov/reports/GAO-26-107980/index.html)  
+**Official Publication Date:** {PUBLICATION_DATE}  
+**Source URL:** [{REPORT_URL}]({REPORT_URL})  
 **Verification Date:** 2026-11-07  
 **Total Verified Records:** {total_count} ({prog_count} Program Finding Areas, {sys_count} High-Impact Systems, {oig_count} VA OIG Recommendations)  
 
@@ -660,9 +696,11 @@ def generate_verification_report():
 
 In accordance with strict factual verification standards:
 1. **Zero Hallucination / Zero Synthetic Data:** Every single numerical count, finding text description, concurrence stance, and milestone date is extracted directly from GAO-26-107980.
-2. **System Anonymisation Preserved:** The five systems are designated strictly as **System 1, System 2, System 3, System 4, and System 5**, adhering to GAO-26-107980 Table 3 footnote a ("*System names are not used due to the sensitivity of the systems*"). No artificial names have been assigned.
-3. **Strict Separation of Source vs. AI Analysis:** Official source findings contain exclusively what GAO and MITRE reported. Regulatory framework crosswalks (NIST SP 800-53, SOC 2 TSC) and compensating control recommendations are segregated into `data/analysis/framework_mappings.json`.
-4. **Unsupported Fields Removed:** Previous arbitrary status assumptions, generic remediation boilerplate, and invented vendor names have been entirely eliminated.
+2. **Official Publication Date Verified:** Verified as **{PUBLICATION_DATE}** throughout all datasets and documentation.
+3. **VA-Reported Remediation vs. Independently Verified Closure:** The report explicitly distinguishes that 379 of 442 system findings were **reported as remediated by VA as of July 2025**. They are strictly documented as VA-reported remediations and are **not** labeled as independently verified or closed by GAO.
+4. **Distinct VA OIG Recommendation Themes:** The two VA OIG recommendations are tracked as separate themes with verified provenance to Footnote 33 and the FY2023 and FY2024 FISMA audit reports.
+5. **System Anonymisation Preserved:** The five systems are designated strictly as **System 1, System 2, System 3, System 4, and System 5**, adhering to GAO-26-107980 Table 3 footnote a (*"System names are not used due to the sensitivity of the systems"*). No artificial names have been assigned.
+6. **Strict Separation of Source vs. AI Analysis:** Official source findings contain exclusively what GAO and MITRE reported. Regulatory framework crosswalks (NIST SP 800-53, SOC 2 TSC) and compensating control recommendations are segregated into `data/analysis/framework_mappings.json`.
 
 ---
 
@@ -690,9 +728,10 @@ Verified directly against **GAO-26-107980 Table 1, Table 4, Table 6**, and lines
 
 ## 3. Dataset B: High-Impact Information Systems (5 Records)
 
-Verified directly against **GAO-26-107980 Table 3, Table 5**, and report text lines 4680–4755, 4985–5125.
+Verified directly against **GAO-26-107980 Table 3, Table 5**, and report text lines 4680–4755, 4985–5125.  
+*All figures represent VA-reported remediation progress as of July 2025.*
 
-| Record ID | System Identifier | Total Findings | High-Risk Remediated | Mod-Risk Remediated | Low-Risk Remediated | Total Remediated (July 2025) | Planned Completion Date | Verification Status |
+| Record ID | System Identifier | Total Findings | High-Risk Remediated (VA-Reported) | Mod-Risk Remediated (VA-Reported) | Low-Risk Remediated (VA-Reported) | Total Remediated (July 2025) | Planned Completion Date | Verification Status |
 |---|---|---|---|---|---|---|---|---|
 | `GAO-26-107980-SYS-01` | System 1 | 107 | 7 of 8 | 36 of 39 | 53 of 60 | 96 of 107 (90%) | 12/31/2025 | Exact Match |
 | `GAO-26-107980-SYS-02` | System 2 | 65 | 3 of 3 | 13 of 22 | 17 of 40 | 33 of 65 (51%) | 01/02/2028 | Exact Match |
@@ -701,11 +740,11 @@ Verified directly against **GAO-26-107980 Table 3, Table 5**, and report text li
 | `GAO-26-107980-SYS-05` | System 5 | 107 | 1 of 1 | 35 of 37 | 60 of 69 | 96 of 107 (90%) | 12/31/2024 | Exact Match |
 
 **Summary Verification:**
-- Total System Findings: $107 + 65 + 107 + 56 + 107 = \mathbf{{442}}$.
-- High-Risk Vulnerabilities: $8 + 3 + 10 + 7 + 1 = \mathbf{{29}}$ (27 remediated by July 2025, 93%).
-- Moderate-Risk Vulnerabilities: $39 + 22 + 34 + 23 + 37 = \mathbf{{155}}$ (135 remediated by July 2025).
-- Low-Risk Vulnerabilities: $60 + 40 + 63 + 26 + 69 = \mathbf{{258}}$ (217 remediated by July 2025).
-- Total System Remediated: $\mathbf{{379 \text{{ of }} 442}}$ (86%). Matches report lines 4960–4974 verbatim.
+- Total System Findings: 107 + 65 + 107 + 56 + 107 = 442.
+- High-Risk Vulnerabilities: 8 + 3 + 10 + 7 + 1 = 29 (27 reported remediated by July 2025, 93%).
+- Moderate-Risk Vulnerabilities: 39 + 22 + 34 + 23 + 37 = 155 (135 reported remediated by July 2025).
+- Low-Risk Vulnerabilities: 60 + 40 + 63 + 26 + 69 = 258 (217 reported remediated by July 2025).
+- Total System Reported Remediated: 379 of 442 (86%). Matches report lines 4960–4974 verbatim.
 
 ---
 
@@ -713,10 +752,10 @@ Verified directly against **GAO-26-107980 Table 3, Table 5**, and report text li
 
 Verified directly against **GAO-26-107980 Section 4 (lines 5397–5404), Executive Summary (lines 3611–3616), and Footnote 33 (lines 5858–5867)**.
 
-| Record ID | Issuing Oversight Body | Summary of Documented Recommendation | Status (July 2025) | Underlying FISMA Audit Citations | Verification Status |
+| Record ID | Issuing Oversight Body | Recommendation Theme | Status (July 2025) | Underlying FISMA Audit Citations | Verification Status |
 |---|---|---|---|---|---|
-| `GAO-26-107980-OIG-01` | VA OIG | Ensure the department tracks and updates planned remediation documents (POA&Ms) | `Not implemented` | VA OIG Audit 23-01105-69 (FY23) & Audit 24-01233-90 (FY24) | Exact Match |
-| `GAO-26-107980-OIG-02` | VA OIG | Improve process for resolving vulnerabilities that cannot be addressed within policy timeframes by ensuring implementation of mitigating controls | `Not implemented` | VA OIG Audit 23-01105-69 (FY23) & Audit 24-01233-90 (FY24) | Exact Match |
+| `GAO-26-107980-OIG-01` | VA OIG | POA&M Tracking and Updating | `Not implemented` | VA OIG Audit 23-01105-69 (FY23) & Audit 24-01233-90 (FY24) | Exact Match |
+| `GAO-26-107980-OIG-02` | VA OIG | Mitigating Controls for Delayed Vulnerabilities | `Not implemented` | VA OIG Audit 23-01105-69 (FY23) & Audit 24-01233-90 (FY24) | Exact Match |
 
 ---
 
@@ -727,7 +766,7 @@ All **18 distinct records** ({prog_count} program findings, {sys_count} system f
     return report
 
 def main():
-    print("Writing authentic datasets...")
+    print(f"Writing authentic datasets with publication date: {PUBLICATION_DATE}...")
     
     # Write program findings
     prog_path = DATA_PROCESSED_DIR / "program_findings.json"
