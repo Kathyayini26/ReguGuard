@@ -1,0 +1,30 @@
+{
+  "framework": "AICPA SOC 2 Type II",
+  "controls": [
+    {
+      "code": "CC6.1",
+      "title": "Logical Access Security & Segregation of Duties",
+      "baseline_remediation": "Restrict production access; enforce least privilege with MFA and ephemeral credentials."
+    },
+    {
+      "code": "CC6.2",
+      "title": "User Registration, Modification, and De-provisioning",
+      "baseline_remediation": "Automated Okta/Google Workspace SCIM de-provisioning within 24 hours of HR offboarding."
+    },
+    {
+      "code": "CC6.3",
+      "title": "Access Entitlement & Periodic Authorization Reviews",
+      "baseline_remediation": "Quarterly entitlement reviews certified by departmental managers."
+    },
+    {
+      "code": "CC6.6",
+      "title": "Boundary Protection & Network Segmentation",
+      "baseline_remediation": "AWS Security Groups and VPC peering enforcing strict ingress/egress denial rules."
+    },
+    {
+      "code": "CC6.8",
+      "title": "Malicious Code Protection & Unauthorized Execution",
+      "baseline_remediation": "GitHub branch protection enforcing 2 required reviews and passing SonarQube/Trivy CI scans."
+    }
+  ]
+}

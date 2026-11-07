@@ -1,0 +1,44 @@
+[
+  {
+    "scenario_id": "SCENARIO-01-SESSION-1",
+    "session": 1,
+    "year": 2025,
+    "auditor_firm": "Schellman",
+    "inquiry": {
+      "inquiry_id": "INQ-2025-01",
+      "framework": "SOC2_TYPE_II",
+      "inquiry_text": "Auditor noted unrestricted IAM administrator credentials in staging cluster without formal dual-peer segregation of duties under CC6.1.",
+      "affected_resource": "k8s-staging-cluster/iam-admin",
+      "severity": "HIGH"
+    },
+    "rejected_proposal": {
+      "proposal": "Weekly manual spreadsheet access review sheet",
+      "reason": "Lacks cryptographic tamper-evidence and cannot be verified independently."
+    },
+    "accepted_compensating_control": {
+      "precedent_id": "PREC-CC61-01",
+      "title": "Automated Ephemeral KMS Log Pipeline",
+      "technical_mechanism": "AWS CloudTrail + KMS digest verification with GitHub Actions dual-approval peer gate",
+      "evidence_artifacts": ["CloudTrail digest validation logs", "GitHub PR approval metadata"]
+    }
+  },
+  {
+    "scenario_id": "SCENARIO-02-SESSION-2",
+    "session": 2,
+    "year": 2026,
+    "auditor_firm": "Schellman",
+    "inquiry": {
+      "inquiry_id": "INQ-2026-04",
+      "framework": "SOC2_TYPE_II",
+      "inquiry_text": "Developers observed assuming administrative root roles on GPU training pipeline nodes without an automated approval gate (CC6.1).",
+      "affected_resource": "ml-training-pipeline/gpu-nodes",
+      "severity": "HIGH"
+    },
+    "expected_behavior": {
+      "evidence_tier": "Confirmed",
+      "should_flag_anti_pattern": true,
+      "flagged_anti_pattern_text": "Manual spreadsheet access review sheet",
+      "expected_precedent_id": "PREC-CC61-01"
+    }
+  }
+]
