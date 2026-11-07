@@ -1,0 +1,187 @@
+[
+  {
+    "record_id": "GAO-26-107980-SYS-01",
+    "system_identifier": "System 1",
+    "anonymisation_note": "System names are not used due to the sensitivity of the systems (GAO-26-107980, Table 3 footnote a).",
+    "total_findings": 107,
+    "original_estimated_remediation_date": "12/31/2025",
+    "vulnerabilities": {
+      "high_risk": {
+        "total": 8,
+        "remediated_july_2025": 7,
+        "remaining_unremediated_july_2025": 1
+      },
+      "moderate_risk": {
+        "total": 39,
+        "remediated_july_2025": 36,
+        "remaining_unremediated_july_2025": 3
+      },
+      "low_risk": {
+        "total": 60,
+        "remediated_july_2025": 53,
+        "remaining_unremediated_july_2025": 7
+      },
+      "total_remediated_july_2025": "96 of 107 (90%)",
+      "total_unremediated_july_2025": 11
+    },
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 3",
+        "Table 5"
+      ],
+      "section": "VA Reported Remediating Most Findings for the Five Systems, but Challenges Remain",
+      "page_or_paragraph": "Lines 4684-4695, 5013-5033",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables"
+    }
+  },
+  {
+    "record_id": "GAO-26-107980-SYS-02",
+    "system_identifier": "System 2",
+    "anonymisation_note": "System names are not used due to the sensitivity of the systems (GAO-26-107980, Table 3 footnote a).",
+    "total_findings": 65,
+    "original_estimated_remediation_date": "01/02/2028",
+    "vulnerabilities": {
+      "high_risk": {
+        "total": 3,
+        "remediated_july_2025": 3,
+        "remaining_unremediated_july_2025": 0
+      },
+      "moderate_risk": {
+        "total": 22,
+        "remediated_july_2025": 13,
+        "remaining_unremediated_july_2025": 9
+      },
+      "low_risk": {
+        "total": 40,
+        "remediated_july_2025": 17,
+        "remaining_unremediated_july_2025": 23
+      },
+      "total_remediated_july_2025": "33 of 65 (51%)",
+      "total_unremediated_july_2025": 32
+    },
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 3",
+        "Table 5"
+      ],
+      "section": "VA Reported Remediating Most Findings for the Five Systems, but Challenges Remain",
+      "page_or_paragraph": "Lines 4698-4709, 5035-5054",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables"
+    }
+  },
+  {
+    "record_id": "GAO-26-107980-SYS-03",
+    "system_identifier": "System 3",
+    "anonymisation_note": "System names are not used due to the sensitivity of the systems (GAO-26-107980, Table 3 footnote a).",
+    "total_findings": 107,
+    "original_estimated_remediation_date": "03/30/2025",
+    "vulnerabilities": {
+      "high_risk": {
+        "total": 10,
+        "remediated_july_2025": 10,
+        "remaining_unremediated_july_2025": 0
+      },
+      "moderate_risk": {
+        "total": 34,
+        "remediated_july_2025": 34,
+        "remaining_unremediated_july_2025": 0
+      },
+      "low_risk": {
+        "total": 63,
+        "remediated_july_2025": 63,
+        "remaining_unremediated_july_2025": 0
+      },
+      "total_remediated_july_2025": "107 of 107 (100%)",
+      "total_unremediated_july_2025": 0
+    },
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 3",
+        "Table 5"
+      ],
+      "section": "VA Reported Remediating Most Findings for the Five Systems, but Challenges Remain",
+      "page_or_paragraph": "Lines 4712-4723, 5057-5076",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables"
+    }
+  },
+  {
+    "record_id": "GAO-26-107980-SYS-04",
+    "system_identifier": "System 4",
+    "anonymisation_note": "System names are not used due to the sensitivity of the systems (GAO-26-107980, Table 3 footnote a).",
+    "total_findings": 56,
+    "original_estimated_remediation_date": "01/31/2025",
+    "vulnerabilities": {
+      "high_risk": {
+        "total": 7,
+        "remediated_july_2025": 6,
+        "remaining_unremediated_july_2025": 1
+      },
+      "moderate_risk": {
+        "total": 23,
+        "remediated_july_2025": 17,
+        "remaining_unremediated_july_2025": 6
+      },
+      "low_risk": {
+        "total": 26,
+        "remediated_july_2025": 24,
+        "remaining_unremediated_july_2025": 2
+      },
+      "total_remediated_july_2025": "47 of 56 (84%)",
+      "total_unremediated_july_2025": 9
+    },
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 3",
+        "Table 5"
+      ],
+      "section": "VA Reported Remediating Most Findings for the Five Systems, but Challenges Remain",
+      "page_or_paragraph": "Lines 4726-4737, 5081-5098",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables"
+    }
+  },
+  {
+    "record_id": "GAO-26-107980-SYS-05",
+    "system_identifier": "System 5",
+    "anonymisation_note": "System names are not used due to the sensitivity of the systems (GAO-26-107980, Table 3 footnote a).",
+    "total_findings": 107,
+    "original_estimated_remediation_date": "12/31/2024",
+    "vulnerabilities": {
+      "high_risk": {
+        "total": 1,
+        "remediated_july_2025": 1,
+        "remaining_unremediated_july_2025": 0
+      },
+      "moderate_risk": {
+        "total": 37,
+        "remediated_july_2025": 35,
+        "remaining_unremediated_july_2025": 2
+      },
+      "low_risk": {
+        "total": 69,
+        "remediated_july_2025": 60,
+        "remaining_unremediated_july_2025": 9
+      },
+      "total_remediated_july_2025": "96 of 107 (90%)",
+      "total_unremediated_july_2025": 11
+    },
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 3",
+        "Table 5"
+      ],
+      "section": "VA Reported Remediating Most Findings for the Five Systems, but Challenges Remain",
+      "page_or_paragraph": "Lines 4740-4752, 5101-5120",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables"
+    }
+  }
+]

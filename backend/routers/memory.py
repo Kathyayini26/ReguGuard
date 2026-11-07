@@ -73,42 +73,98 @@ async def seed_demo_memory(hindsight: HindsightClient = Depends(get_hindsight)):
 @router.post("/seed-real-data")
 async def seed_real_audit_data(hindsight: HindsightClient = Depends(get_hindsight)):
     """
-    Ingests all 18 authentic public oversight records (GAO-26-107980, CPAG GAO-23-104705, etc.)
-    into Vectorize Hindsight memory with complete verifiable provenance.
+    Ingests all 18 authentic records from GAO-26-107980:
+    - 11 Program Findings (program_findings.json)
+    - 5 Anonymised High-Impact Systems (system_findings.json)
+    - 2 VA OIG Recommendations (oig_recommendations.json)
+    Preserves exact reported numbers, dates, and source evidence.
     """
     import json
     from pathlib import Path
 
-    findings_file = Path(__file__).resolve().parent.parent.parent / "data" / "processed" / "real_audit_findings.json"
-    if not findings_file.exists():
-        return {"status": "error", "message": f"Dataset file not found at {findings_file}"}
+    processed_dir = Path(__file__).resolve().parent.parent.parent / "data" / "processed"
+    prog_file = processed_dir / "program_findings.json"
+    sys_file = processed_dir / "system_findings.json"
+    oig_file = processed_dir / "oig_recommendations.json"
 
-    with open(findings_file, "r", encoding="utf-8") as f:
-        records = json.load(f)
+    if not (prog_file.exists() and sys_file.exists() and oig_file.exists()):
+        return {"status": "error", "message": "One or more authentic dataset files are missing in data/processed"}
+
+    with open(prog_file, "r", encoding="utf-8") as f:
+        prog_records = json.load(f)
+    with open(sys_file, "r", encoding="utf-8") as f:
+        sys_records = json.load(f)
+    with open(oig_file, "r", encoding="utf-8") as f:
+        oig_records = json.load(f)
 
     loaded_count = 0
-    for item in records:
+
+    # 1. Ingest 11 Program Findings
+    for p in prog_records:
         content = (
-            f"Audit Finding [{item['report_number']} - {item['id']}]: "
-            f"Agency: {item['agency']}. Finding Area: {item['finding_area']}. "
-            f"Weakness: {item['identified_weakness']} "
-            f"Auditor Recommendation: {item['auditor_recommendation']} "
-            f"Remediation Action: {item['remediation_action']} "
-            f"Status: {item['implementation_status']} ({item['status_details']}). "
-            f"Primary Controls: {', '.join(item['framework_reference']['control_codes'])}."
+            f"Oversight Finding [{p['source_evidence']['report_number']} - {p['record_id']}]: "
+            f"Area: {p['finding_area']}. Description: {p['mitre_finding_description']} "
+            f"VA Concurrence: {p['va_concurrence']}. Planned Actions: {p['remediation_actions_total']} "
+            f"(Completed July 2025: {p['remediation_actions_completed_july_2025']}). "
+            f"Target Remediation Date: {p['estimated_remediation_date']}."
         )
         metadata = {
-            "record_id": item["id"],
-            "agency": item["agency"],
-            "report_number": item["report_number"],
-            "publication_date": item["publication_date"],
-            "finding_area": item["finding_area"],
-            "implementation_status": item["implementation_status"],
-            "status_details": item["status_details"],
-            "control_codes": item["framework_reference"]["control_codes"],
-            "soc2_crosswalk": item["framework_reference"]["soc2_crosswalk"],
-            "provenance_url": item["provenance"]["source_url"],
-            "provenance_section": item["provenance"]["page_or_section"]
+            "record_id": p["record_id"],
+            "category": "program_finding",
+            "finding_area": p["finding_area"],
+            "va_concurrence": p["va_concurrence"],
+            "remediation_actions_total": p["remediation_actions_total"],
+            "remediation_actions_completed": p["remediation_actions_completed_july_2025"],
+            "estimated_remediation_date": p["estimated_remediation_date"],
+            "delay_documented": p["delay_documented"],
+            "source_report": p["source_evidence"]["report_number"],
+            "source_tables": p["source_evidence"]["tables"],
+            "source_url": p["source_evidence"]["source_url"]
+        }
+        await hindsight.retain(content=content, metadata=metadata)
+        loaded_count += 1
+
+    # 2. Ingest 5 Anonymised Systems
+    for s in sys_records:
+        v = s["vulnerabilities"]
+        content = (
+            f"Oversight Finding [{s['source_evidence']['report_number']} - {s['record_id']}]: "
+            f"Target: {s['system_identifier']} (High-Impact). Total Findings: {s['total_findings']}. "
+            f"High-Risk Remediated: {v['high_risk']['remediated_july_2025']}/{v['high_risk']['total']}. "
+            f"Moderate-Risk Remediated: {v['moderate_risk']['remediated_july_2025']}/{v['moderate_risk']['total']}. "
+            f"Low-Risk Remediated: {v['low_risk']['remediated_july_2025']}/{v['low_risk']['total']}. "
+            f"Total Remediated July 2025: {v['total_remediated_july_2025']}. "
+            f"Planned Completion Date: {s['original_estimated_remediation_date']}."
+        )
+        metadata = {
+            "record_id": s["record_id"],
+            "category": "system_finding",
+            "system_identifier": s["system_identifier"],
+            "total_findings": s["total_findings"],
+            "total_remediated_july_2025": v["total_remediated_july_2025"],
+            "planned_date": s["original_estimated_remediation_date"],
+            "source_report": s["source_evidence"]["report_number"],
+            "source_tables": s["source_evidence"]["tables"],
+            "source_url": s["source_evidence"]["source_url"]
+        }
+        await hindsight.retain(content=content, metadata=metadata)
+        loaded_count += 1
+
+    # 3. Ingest 2 OIG Recommendations
+    for o in oig_records:
+        content = (
+            f"Oversight Recommendation [{o['source_evidence']['report_number']} - {o['record_id']}]: "
+            f"Issuing Body: {o['issuing_body']}. Evaluated by: {o['evaluating_body']}. "
+            f"Recommendation: {o['recommendation_summary']} "
+            f"Status (July 2025): {o['implementation_status_july_2025']}."
+        )
+        metadata = {
+            "record_id": o["record_id"],
+            "category": "oig_recommendation",
+            "issuing_body": o["issuing_body"],
+            "status_july_2025": o["implementation_status_july_2025"],
+            "source_report": o["source_evidence"]["report_number"],
+            "source_url": o["source_evidence"]["source_url"]
         }
         await hindsight.retain(content=content, metadata=metadata)
         loaded_count += 1
@@ -116,7 +172,13 @@ async def seed_real_audit_data(hindsight: HindsightClient = Depends(get_hindsigh
     return {
         "status": "success",
         "ingested_records": loaded_count,
-        "primary_source": "GAO-26-107980 & GAO-23-104705",
+        "breakdown": {
+            "program_findings": len(prog_records),
+            "system_findings": len(sys_records),
+            "oig_recommendations": len(oig_records)
+        },
+        "primary_source": "GAO-26-107980",
         "message": f"Successfully ingested {loaded_count} authentic audit records into Hindsight memory"
     }
+
 

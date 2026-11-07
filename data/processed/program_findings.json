@@ -1,0 +1,299 @@
+[
+  {
+    "record_id": "GAO-26-107980-PROG-01",
+    "finding_number": 1,
+    "finding_area": "Office of Information Security Customer Service to Systems Teams",
+    "mitre_finding_description": "Office of Information Security teams that provide security services to system-level teams did not effectively communicate and coordinate together, hindering effective cybersecurity implementation.",
+    "va_concurrence": "Non-concur",
+    "va_concurrence_notes": "VA did not concur with this finding area. Nonetheless, VA's plan reported completed efforts for Customer Service to System Teams.",
+    "remediation_actions_total": 4,
+    "remediation_actions_completed_july_2025": 4,
+    "remediation_actions_in_progress_july_2025": 0,
+    "estimated_remediation_date": "Not applicable",
+    "october_2024_remediation_date": "Not applicable*",
+    "delay_documented": false,
+    "delay_reasons": null,
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 1",
+        "Table 4",
+        "Table 6"
+      ],
+      "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
+      "page_or_paragraph": "Lines 4144-4152, 4791-4796, 5168-5177",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables"
+    }
+  },
+  {
+    "record_id": "GAO-26-107980-PROG-02",
+    "finding_number": 2,
+    "finding_area": "Cybersecurity Governance",
+    "mitre_finding_description": "Siloed operations and outdated policies affect overall cybersecurity effectiveness.",
+    "va_concurrence": "Non-concur",
+    "va_concurrence_notes": "VA did not concur with this finding area. Nonetheless, VA's plan reported ongoing efforts to address Cybersecurity Governance and provided a target remediation date.",
+    "remediation_actions_total": 7,
+    "remediation_actions_completed_july_2025": 3,
+    "remediation_actions_in_progress_july_2025": 4,
+    "estimated_remediation_date": "12/31/2025*",
+    "october_2024_remediation_date": "12/31/2025*",
+    "delay_documented": false,
+    "delay_reasons": null,
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 1",
+        "Table 4",
+        "Table 6"
+      ],
+      "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
+      "page_or_paragraph": "Lines 4157-4164, 4801-4806, 5182-5192",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables"
+    }
+  },
+  {
+    "record_id": "GAO-26-107980-PROG-03",
+    "finding_number": 3,
+    "finding_area": "Cybersecurity Risk Management",
+    "mitre_finding_description": "VA needs to make improvements to mature beyond compliance activities.",
+    "va_concurrence": "Concur",
+    "va_concurrence_notes": "VA concurred with this finding area.",
+    "remediation_actions_total": 5,
+    "remediation_actions_completed_july_2025": 1,
+    "remediation_actions_in_progress_july_2025": 4,
+    "estimated_remediation_date": "9/30/2026",
+    "october_2024_remediation_date": "9/30/2026",
+    "delay_documented": false,
+    "delay_reasons": null,
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 1",
+        "Table 4",
+        "Table 6"
+      ],
+      "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
+      "page_or_paragraph": "Lines 4168-4174, 4811-4816, 5196-5205",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables"
+    }
+  },
+  {
+    "record_id": "GAO-26-107980-PROG-04",
+    "finding_number": 4,
+    "finding_area": "Information System Security Officer and System Steward Roles",
+    "mitre_finding_description": "Information System Security Officer roles need to be aligned with specific systems (e.g., infrastructure, medical devices).",
+    "va_concurrence": "Concur",
+    "va_concurrence_notes": "VA concurred with this finding area.",
+    "remediation_actions_total": 3,
+    "remediation_actions_completed_july_2025": 1,
+    "remediation_actions_in_progress_july_2025": 2,
+    "estimated_remediation_date": "3/30/2026",
+    "october_2024_remediation_date": "3/30/2026",
+    "delay_documented": false,
+    "delay_reasons": null,
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 1",
+        "Table 4",
+        "Table 6"
+      ],
+      "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
+      "page_or_paragraph": "Lines 4179-4186, 4821-4827, 5210-5220",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables"
+    }
+  },
+  {
+    "record_id": "GAO-26-107980-PROG-05",
+    "finding_number": 5,
+    "finding_area": "Information Security Continuous Monitoring",
+    "mitre_finding_description": "VA needs to make improvements in control assessments, vulnerability scanning, configuration compliance, and software management.",
+    "va_concurrence": "Concur",
+    "va_concurrence_notes": "VA concurred with this finding area.",
+    "remediation_actions_total": 4,
+    "remediation_actions_completed_july_2025": 1,
+    "remediation_actions_in_progress_july_2025": 3,
+    "estimated_remediation_date": "9/30/2026",
+    "october_2024_remediation_date": "9/30/2026",
+    "delay_documented": false,
+    "delay_reasons": null,
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 1",
+        "Table 4",
+        "Table 6"
+      ],
+      "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
+      "page_or_paragraph": "Lines 4191-4197, 4832-4837, 5225-5234",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables"
+    }
+  },
+  {
+    "record_id": "GAO-26-107980-PROG-06",
+    "finding_number": 6,
+    "finding_area": "Medical Devices",
+    "mitre_finding_description": "VA faces challenges in quickly addressing vulnerable medical devices and maintaining security over the life of these devices.",
+    "va_concurrence": "Concur",
+    "va_concurrence_notes": "VA concurred with this finding area.",
+    "remediation_actions_total": 6,
+    "remediation_actions_completed_july_2025": 3,
+    "remediation_actions_in_progress_july_2025": 3,
+    "estimated_remediation_date": "May 2027",
+    "october_2024_remediation_date": "9/30/2025",
+    "delay_documented": true,
+    "delay_reasons": "Experienced delays due to pending modernization efforts and staff cuts, as well as awaiting decisions on alternatives, among other things.",
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 1",
+        "Table 4",
+        "Table 6"
+      ],
+      "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
+      "page_or_paragraph": "Lines 4202-4208, 4842-4847, 5239-5248, 5328-5335",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables and text"
+    }
+  },
+  {
+    "record_id": "GAO-26-107980-PROG-07",
+    "finding_number": 7,
+    "finding_area": "Cloud Security",
+    "mitre_finding_description": "VA needs to consistently apply cloud configurations.",
+    "va_concurrence": "Concur",
+    "va_concurrence_notes": "VA concurred with this finding area.",
+    "remediation_actions_total": 6,
+    "remediation_actions_completed_july_2025": 2,
+    "remediation_actions_in_progress_july_2025": 4,
+    "estimated_remediation_date": "9/30/2025*",
+    "october_2024_remediation_date": "9/30/2025",
+    "delay_documented": false,
+    "delay_reasons": null,
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 1",
+        "Table 4",
+        "Table 6"
+      ],
+      "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
+      "page_or_paragraph": "Lines 4213-4219, 4852-4857, 5253-5262",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables"
+    }
+  },
+  {
+    "record_id": "GAO-26-107980-PROG-08",
+    "finding_number": 8,
+    "finding_area": "Shadow IT",
+    "mitre_finding_description": "Shadow IT introduces unaccounted-for risk.",
+    "va_concurrence": "Concur",
+    "va_concurrence_notes": "VA concurred with this finding area.",
+    "remediation_actions_total": 4,
+    "remediation_actions_completed_july_2025": 1,
+    "remediation_actions_in_progress_july_2025": 3,
+    "estimated_remediation_date": "2/28/2026",
+    "october_2024_remediation_date": "2/28/2026",
+    "delay_documented": false,
+    "delay_reasons": null,
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 1",
+        "Table 4",
+        "Table 6"
+      ],
+      "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
+      "page_or_paragraph": "Lines 4223-4228, 4862-4867, 5267-5276",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables"
+    }
+  },
+  {
+    "record_id": "GAO-26-107980-PROG-09",
+    "finding_number": 9,
+    "finding_area": "Cyber Protection",
+    "mitre_finding_description": "VA can enhance protections by implementing zero trust architecture.",
+    "va_concurrence": "Concur",
+    "va_concurrence_notes": "VA concurred with this finding area.",
+    "remediation_actions_total": 7,
+    "remediation_actions_completed_july_2025": 1,
+    "remediation_actions_in_progress_july_2025": 6,
+    "estimated_remediation_date": "Fiscal year 2026",
+    "october_2024_remediation_date": "6/30/2025",
+    "delay_documented": true,
+    "delay_reasons": "Experienced delays due to pending modernization efforts and staff cuts, as well as awaiting decisions on alternatives, among other things.",
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 1",
+        "Table 4",
+        "Table 6"
+      ],
+      "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
+      "page_or_paragraph": "Lines 4233-4240, 4872-4877, 5281-5290, 5328-5335",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables and text"
+    }
+  },
+  {
+    "record_id": "GAO-26-107980-PROG-10",
+    "finding_number": 10,
+    "finding_area": "Cyber Detection",
+    "mitre_finding_description": "VA has opportunities to optimize tools, alert triggers, and integration capabilities.",
+    "va_concurrence": "Concur",
+    "va_concurrence_notes": "VA concurred with this finding area.",
+    "remediation_actions_total": 5,
+    "remediation_actions_completed_july_2025": 1,
+    "remediation_actions_in_progress_july_2025": 4,
+    "estimated_remediation_date": "9/30/2026",
+    "october_2024_remediation_date": "9/30/2025",
+    "delay_documented": true,
+    "delay_reasons": "Date pushed from 9/30/2025 in October 2024 plan to 9/30/2026 in July 2025 report.",
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 1",
+        "Table 4",
+        "Table 6"
+      ],
+      "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
+      "page_or_paragraph": "Lines 4244-4250, 4882-4887, 5295-5304",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables"
+    }
+  },
+  {
+    "record_id": "GAO-26-107980-PROG-11",
+    "finding_number": 11,
+    "finding_area": "Cyber Response and Recovery",
+    "mitre_finding_description": "Siloed organizations and manual operations hinder VA's ability to maintain mission continuity.",
+    "va_concurrence": "Concur",
+    "va_concurrence_notes": "VA concurred with this finding area.",
+    "remediation_actions_total": 4,
+    "remediation_actions_completed_july_2025": 2,
+    "remediation_actions_in_progress_july_2025": 2,
+    "estimated_remediation_date": "Fiscal year 2026",
+    "october_2024_remediation_date": "9/30/2025",
+    "delay_documented": true,
+    "delay_reasons": "Experienced delays due to pending modernization efforts and staff cuts, as well as awaiting decisions on alternatives, among other things.",
+    "source_evidence": {
+      "report_number": "GAO-26-107980",
+      "source_url": "https://files.gao.gov/reports/GAO-26-107980/index.html",
+      "tables": [
+        "Table 1",
+        "Table 4",
+        "Table 6"
+      ],
+      "section": "VA Reported Completing Remediation Actions for Program Findings, but Some Actions Have Been Delayed",
+      "page_or_paragraph": "Lines 4255-4261, 4892-4897, 5309-5318, 5328-5335",
+      "extraction_mode": "Directly reported from GAO-26-107980 tables and text"
+    }
+  }
+]
